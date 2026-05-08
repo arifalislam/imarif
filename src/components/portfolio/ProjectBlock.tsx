@@ -15,9 +15,10 @@ interface Props {
   image: string;
   credit?: string;
   reverse?: boolean;
+  onOpen?: () => void;
 }
 
-export function ProjectBlock({ index, title, description, meta, tags, image, credit, reverse }: Props) {
+export function ProjectBlock({ index, title, description, meta, tags, image, credit, reverse, onOpen }: Props) {
   const root = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
 
@@ -117,7 +118,10 @@ export function ProjectBlock({ index, title, description, meta, tags, image, cre
         </div>
 
         <div className="col-span-12 md:col-span-6 md:[direction:ltr] relative">
-          <div className="relative aspect-[4/5] overflow-hidden bg-black">
+          <button
+            onClick={onOpen}
+            className="group relative aspect-[4/5] overflow-hidden bg-black w-full block cursor-pointer"
+          >
             <img
               ref={imgRef}
               src={image}
@@ -125,9 +129,14 @@ export function ProjectBlock({ index, title, description, meta, tags, image, cre
               loading="lazy"
               width={1024}
               height={1280}
-              className="w-full h-full object-cover will-change-transform"
+              className="w-full h-full object-cover will-change-transform transition duration-700 group-hover:scale-105"
             />
-          </div>
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition duration-500 flex items-center justify-center">
+              <span className="opacity-0 group-hover:opacity-100 transition duration-500 translate-y-2 group-hover:translate-y-0 text-xs uppercase tracking-[0.3em] border border-white rounded-full px-6 py-3">
+                View case →
+              </span>
+            </div>
+          </button>
           {credit && (
             <p className="text-[10px] uppercase tracking-[0.25em] text-white/40 mt-4 text-right">
               {credit}
