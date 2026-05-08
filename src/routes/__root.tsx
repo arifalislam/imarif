@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "ARIF | Product Designer" },
+      { name: "description", content: "Seasoned Product Designer with more than 5yrs experinces. Love to Design and build the things that matter." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "ARIF | Product Designer" },
+      { property: "og:description", content: "Seasoned Product Designer with more than 5yrs experinces. Love to Design and build the things that matter." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "ARIF | Product Designer" },
+      { name: "twitter:description", content: "Seasoned Product Designer with more than 5yrs experinces. Love to Design and build the things that matter." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/b2394d4e-a76d-4ab2-a0fa-8901481a3065" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/b2394d4e-a76d-4ab2-a0fa-8901481a3065" },
     ],
     links: [
       {
