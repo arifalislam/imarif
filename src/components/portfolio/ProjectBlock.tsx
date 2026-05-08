@@ -15,9 +15,10 @@ interface Props {
   image: string;
   credit?: string;
   reverse?: boolean;
+  onOpen?: () => void;
 }
 
-export function ProjectBlock({ index, title, description, meta, tags, image, credit, reverse }: Props) {
+export function ProjectBlock({ index, title, description, meta, tags, image, credit, reverse, onOpen }: Props) {
   const root = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
 
