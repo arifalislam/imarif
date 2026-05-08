@@ -25,12 +25,13 @@ export function Hero() {
     <section ref={root} className="relative min-h-screen overflow-hidden flex flex-col justify-end pb-16 px-6 md:px-10">
       <img
         src={heroImg}
-        alt=""
-        className="hero-img absolute inset-0 w-full h-full object-cover opacity-50"
+        alt="Portrait"
+        className="hero-img absolute inset-0 w-full h-full object-cover opacity-90"
         width={1280}
         height={1600}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-black/40" />
 
       <div className="relative grid grid-cols-12 gap-4 items-end">
         <div className="col-span-12 md:col-span-9">
