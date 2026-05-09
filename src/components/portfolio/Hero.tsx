@@ -14,15 +14,37 @@ export function Hero() {
         stagger: 0.12,
         delay: 0.2,
       });
-      gsap.from(".hero-meta", { opacity: 0, y: 20, duration: 1, delay: 1, ease: "power3.out", stagger: 0.1 });
-      gsap.from(".hero-img", { scale: 1.2, opacity: 0, duration: 1.6, delay: 0.3, ease: "expo.out" });
-      gsap.from(".hero-rule", { scaleX: 0, transformOrigin: "left", duration: 1.4, delay: 0.6, ease: "expo.out" });
+      gsap.from(".hero-meta", {
+        opacity: 0,
+        y: 20,
+        duration: 1,
+        delay: 1,
+        ease: "power3.out",
+        stagger: 0.1,
+      });
+      gsap.from(".hero-img", {
+        scale: 1.2,
+        opacity: 0,
+        duration: 1.6,
+        delay: 0.3,
+        ease: "expo.out",
+      });
+      gsap.from(".hero-rule", {
+        scaleX: 0,
+        transformOrigin: "left",
+        duration: 1.4,
+        delay: 0.6,
+        ease: "expo.out",
+      });
     }, root);
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={root} className="relative min-h-screen overflow-hidden flex flex-col justify-end pb-16 px-6 md:px-10">
+    <section
+      ref={root}
+      className="relative min-h-screen overflow-hidden flex flex-col justify-end pb-16 px-6 md:px-10"
+    >
       <img
         src={heroImg}
         alt="Portrait"

@@ -16,7 +16,11 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "A R I F — Seasoned Digital Product Designer" },
-      { name: "description", content: "Selected work in digital and product design — concepts, form studies and prototypes by A R I F." },
+      {
+        name: "description",
+        content:
+          "Selected work in digital and product design — concepts, form studies and prototypes by A R I F.",
+      },
       { property: "og:title", content: "Kushagra — Industrial Designer Portfolio" },
       { property: "og:description", content: "Selected work in industrial and product design." },
     ],
@@ -28,7 +32,8 @@ const projects: ProjectData[] = [
   {
     index: "01",
     title: "BEAVER - Social Co-Pilot",
-    description: "This project explores a modern SaaS landing page experience for an AI-powered social media assistant platform called BEAVER. The goal was to create a visually immersive, conversion-focused interface that communicates intelligence, automation, and real-time engagement while maintaining clarity and usability.",
+    description:
+      "This project explores a modern SaaS landing page experience for an AI-powered social media assistant platform called BEAVER. The goal was to create a visually immersive, conversion-focused interface that communicates intelligence, automation, and real-time engagement while maintaining clarity and usability.",
     meta: "Interview Project · Problem Framing, UX Research, Jouerney Mapping,",
     image: p1,
     year: "2026",
@@ -39,7 +44,8 @@ const projects: ProjectData[] = [
   {
     index: "02",
     title: "JMI ERP - Enterprise software",
-    description: "JMI ERP collects, stores, manages, and interprets data from your core business activities within no time to give you all of this information in real-time! This error-free ERP system keeps all your actions organized and efficient. It is a one-stop solution for all your business needs, from inventory management to customer relationship management, financial accounting, and human resources management.",
+    description:
+      "JMI ERP collects, stores, manages, and interprets data from your core business activities within no time to give you all of this information in real-time! This error-free ERP system keeps all your actions organized and efficient. It is a one-stop solution for all your business needs, from inventory management to customer relationship management, financial accounting, and human resources management.",
     meta: "Large Scale  Project - Understanding Business, I/A , Wireframing, Prototyping, Development Handoff",
     image: p2,
     year: "2024",
@@ -50,7 +56,8 @@ const projects: ProjectData[] = [
   {
     index: "03",
     title: "Study Planner - Product Breakdown & Form Ideation",
-    description: "This dashboard has a sleek, high-end <strong>Light and Dark Mode</strong> aesthetic that fits the modern EdTech space well. However, there are some significant functional contradictions and UX hurdles that need to be addressed to make it truly user-friendly.",
+    description:
+      "This dashboard has a sleek, high-end <strong>Light and Dark Mode</strong> aesthetic that fits the modern EdTech space well. However, there are some significant functional contradictions and UX hurdles that need to be addressed to make it truly user-friendly.",
     meta: "Individual Project",
     image: p3,
     year: "2024",

@@ -6,11 +6,20 @@ export function Nav() {
           A R I F <span className="text-[color:var(--accent-red)]">.</span>
         </a>
         <nav className="hidden md:flex gap-10 text-xs uppercase tracking-[0.2em] font-medium">
-          <a href="#about" className="hover:opacity-60 transition">About</a>
-          <a href="#work" className="hover:opacity-60 transition">Work</a>
-          <a href="#contact" className="hover:opacity-60 transition">Contact</a>
+          <a href="#about" className="hover:opacity-60 transition">
+            About
+          </a>
+          <a href="#work" className="hover:opacity-60 transition">
+            Work
+          </a>
+          <a href="#contact" className="hover:opacity-60 transition">
+            Contact
+          </a>
         </nav>
-        <a href="#contact" className="text-xs uppercase tracking-[0.2em] font-medium border border-white/40 rounded-full px-4 py-2 hover:bg-white hover:text-black transition">
+        <a
+          href="#contact"
+          className="text-xs uppercase tracking-[0.2em] font-medium border border-white/40 rounded-full px-4 py-2 hover:bg-white hover:text-black transition"
+        >
           Let's talk
         </a>
       </div>

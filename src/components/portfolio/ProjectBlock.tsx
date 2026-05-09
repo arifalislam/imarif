@@ -18,7 +18,17 @@ interface Props {
   onOpen?: () => void;
 }
 
-export function ProjectBlock({ index, title, description, meta, tags, image, credit, reverse, onOpen }: Props) {
+export function ProjectBlock({
+  index,
+  title,
+  description,
+  meta,
+  tags,
+  image,
+  credit,
+  reverse,
+  onOpen,
+}: Props) {
   const root = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
 
@@ -79,7 +89,7 @@ export function ProjectBlock({ index, title, description, meta, tags, image, cre
               end: "bottom top",
               scrub: true,
             },
-          }
+          },
         );
       }
     }, root);
@@ -88,7 +98,9 @@ export function ProjectBlock({ index, title, description, meta, tags, image, cre
 
   return (
     <section ref={root} className="relative py-20 md:py-32 border-t border-white/10">
-      <div className={`grid grid-cols-12 gap-6 md:gap-10 px-6 md:px-10 ${reverse ? "md:[direction:rtl]" : ""}`}>
+      <div
+        className={`grid grid-cols-12 gap-6 md:gap-10 px-6 md:px-10 ${reverse ? "md:[direction:rtl]" : ""}`}
+      >
         <div className="col-span-12 md:col-span-6 md:[direction:ltr] relative">
           <div className="overflow-hidden">
             <div className="pb-num font-display font-bold leading-none text-[28vw] md:text-[18vw] text-white/95">
@@ -106,9 +118,14 @@ export function ProjectBlock({ index, title, description, meta, tags, image, cre
           <p className="pb-text text-xs uppercase tracking-[0.25em] text-white/40 mb-10">{meta}</p>
 
           <div className="flex flex-wrap gap-3 items-start">
-            <span className="pb-tag text-xs uppercase tracking-[0.2em] text-white/40 self-center mr-2">My role</span>
+            <span className="pb-tag text-xs uppercase tracking-[0.2em] text-white/40 self-center mr-2">
+              My role
+            </span>
             {tags.map((t) => (
-              <div key={t.label} className="pb-tag flex flex-col items-center gap-2 text-center w-20">
+              <div
+                key={t.label}
+                className="pb-tag flex flex-col items-center gap-2 text-center w-20"
+              >
                 <div className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center text-base">
                   {t.icon}
                 </div>

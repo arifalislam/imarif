@@ -34,13 +34,13 @@ export function ProjectModal({ project, onClose }: Props) {
         panelRef.current,
         { xPercent: 100 },
         { xPercent: 0, duration: 0.9, ease: "expo.inOut" },
-        "<"
+        "<",
       )
       .fromTo(
         contentRef.current?.querySelectorAll(".pm-anim") ?? [],
         { y: 40, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.8, ease: "expo.out", stagger: 0.07 },
-        "-=0.4"
+        "-=0.4",
       );
 
     return () => {
@@ -51,8 +51,11 @@ export function ProjectModal({ project, onClose }: Props) {
 
   const handleClose = () => {
     const tl = gsap.timeline({ onComplete: onClose });
-    tl.to(panelRef.current, { xPercent: 100, duration: 0.7, ease: "expo.inOut" })
-      .to(overlayRef.current, { opacity: 0, duration: 0.3 }, "-=0.3");
+    tl.to(panelRef.current, { xPercent: 100, duration: 0.7, ease: "expo.inOut" }).to(
+      overlayRef.current,
+      { opacity: 0, duration: 0.3 },
+      "-=0.3",
+    );
   };
 
   useEffect(() => {
@@ -119,13 +122,18 @@ export function ProjectModal({ project, onClose }: Props) {
               ))}
             </div>
             <div className="col-span-12 md:col-span-8">
-              <p className="pm-anim text-xs uppercase tracking-[0.3em] text-white/40 mb-6">Overview</p>
+              <p className="pm-anim text-xs uppercase tracking-[0.3em] text-white/40 mb-6">
+                Overview
+              </p>
               <p
-              className="pm-anim text-2xl md:text-3xl leading-relaxed font-light text-balance"
-              dangerouslySetInnerHTML={{ __html: project.description }}
-            />
+                className="pm-anim text-2xl md:text-3xl leading-relaxed font-light text-balance"
+                dangerouslySetInnerHTML={{ __html: project.description }}
+              />
               <p className="pm-anim mt-10 text-white/60 leading-relaxed">
-                {project.meta}. The process began with extensive market research, sketch exploration and rapid foam mockups before moving into CAD and final renders. Every detail — from the radius of each edge to the tactile feedback of every interaction — was tuned to feel inevitable.
+                {project.meta}. The process began with extensive market research, sketch exploration
+                and rapid foam mockups before moving into CAD and final renders. Every detail — from
+                the radius of each edge to the tactile feedback of every interaction — was tuned to
+                feel inevitable.
               </p>
             </div>
           </div>
@@ -133,14 +141,21 @@ export function ProjectModal({ project, onClose }: Props) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2 px-2 md:px-2 pb-2">
             {project.gallery.map((src, i) => (
               <div key={i} className="pm-anim aspect-[4/3] overflow-hidden bg-white/5">
-                <img src={src} alt="" className="w-full h-full object-cover hover:scale-105 transition duration-700" />
+                <img
+                  src={src}
+                  alt=""
+                  className="w-full h-full object-cover hover:scale-105 transition duration-700"
+                />
               </div>
             ))}
           </div>
 
           <div className="px-8 md:px-16 py-20 border-t border-white/10 flex justify-between items-center">
             <p className="text-xs uppercase tracking-[0.3em] text-white/40">End of project</p>
-            <button onClick={handleClose} className="text-xs uppercase tracking-[0.3em] hover:text-[color:var(--accent-red)] transition">
+            <button
+              onClick={handleClose}
+              className="text-xs uppercase tracking-[0.3em] hover:text-[color:var(--accent-red)] transition"
+            >
               Close ×
             </button>
           </div>

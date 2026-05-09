@@ -23,7 +23,7 @@ export function About() {
             end: "bottom 60%",
             scrub: true,
           },
-        }
+        },
       );
 
       gsap.from(".about-meta", {
@@ -51,7 +51,11 @@ export function About() {
     "I'm an enthusiasstis digital product designer obsessed with the quiet decisions — the radius of an edge, the click of a button, the weight of a thing in your hand. My work lives where form, function and feeling collide.";
 
   return (
-    <section ref={root} id="about" className="relative px-6 md:px-10 py-32 md:py-48 border-t border-white/10">
+    <section
+      ref={root}
+      id="about"
+      className="relative px-6 md:px-10 py-32 md:py-48 border-t border-white/10"
+    >
       <div className="grid grid-cols-12 gap-6 md:gap-10">
         <div className="col-span-12 md:col-span-3">
           <p className="about-meta text-xs uppercase tracking-[0.3em] text-white/40">About — 02</p>
@@ -73,7 +77,9 @@ export function About() {
               { k: "99%", v: "Satisfaction" },
             ].map((s) => (
               <div key={s.v} className="about-stat">
-                <div className="font-display text-5xl md:text-6xl font-bold tracking-tight">{s.k}</div>
+                <div className="font-display text-5xl md:text-6xl font-bold tracking-tight">
+                  {s.k}
+                </div>
                 <div className="mt-3 text-xs uppercase tracking-[0.2em] text-white/50">{s.v}</div>
               </div>
             ))}

@@ -21,7 +21,11 @@ export function Footer() {
   }, []);
 
   return (
-    <footer ref={root} id="contact" className="border-t border-white/10 px-6 md:px-10 py-20 md:py-32">
+    <footer
+      ref={root}
+      id="contact"
+      className="border-t border-white/10 px-6 md:px-10 py-20 md:py-32"
+    >
       <p className="text-xs uppercase tracking-[0.3em] text-white/40 mb-10">Get in touch — 04</p>
       <div className="overflow-hidden">
         <h2 className="ft-line font-display text-[14vw] md:text-[11vw] leading-[0.9] font-bold tracking-tight">
