@@ -5,6 +5,7 @@ import { Hero } from "@/components/portfolio/Hero";
 import { Marquee } from "@/components/portfolio/Marquee";
 import { ProjectBlock } from "@/components/portfolio/ProjectBlock";
 import { About } from "@/components/portfolio/About";
+import { Experience } from "@/components/portfolio/Experience";
 import { Footer } from "@/components/portfolio/Footer";
 import { ProjectModal, type ProjectData } from "@/components/portfolio/ProjectModal";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
@@ -113,6 +114,7 @@ function Index() {
           />
         ))}
       </section>
+      <Experience />
       <Footer />
       <ProjectModal project={active} onClose={() => setActive(null)} />
     </main>
