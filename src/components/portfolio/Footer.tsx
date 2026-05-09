@@ -37,25 +37,42 @@ export function Footer() {
       <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
         <div>
           <p className="text-xs uppercase tracking-[0.25em] text-white/40 mb-3">Email</p>
-          <a href="mailto:hello@kushagra.design" className="hover:text-[color:var(--accent-red)] transition">hello@kushagra.design</a>
+          <a
+            href="mailto:arifalislam642@gmail.com"
+            className="hover:text-[color:var(--accent-red)] transition"
+          >
+            arifalislam642@gmail.com
+          </a>
         </div>
         <div>
           <p className="text-xs uppercase tracking-[0.25em] text-white/40 mb-3">Instagram</p>
-          <a href="#" className="hover:text-[color:var(--accent-red)] transition">@kshgr.studio</a>
+          <a
+            href="https://www.instagram.com/m_arif___i/"
+            target="_new"
+            className="hover:text-[color:var(--accent-red)] transition"
+          >
+            @m_arif___i
+          </a>
         </div>
         <div>
-          <p className="text-xs uppercase tracking-[0.25em] text-white/40 mb-3">Behance</p>
-          <a href="#" className="hover:text-[color:var(--accent-red)] transition">/kushagra</a>
+          <p className="text-xs uppercase tracking-[0.25em] text-white/40 mb-3">Dribbble</p>
+          <a
+            href="https://dribbble.com/ais95"
+            target="_blank"
+            className="hover:text-[color:var(--accent-red)] transition"
+          >
+            Mr. Arif
+          </a>
         </div>
         <div>
           <p className="text-xs uppercase tracking-[0.25em] text-white/40 mb-3">Location</p>
-          <p>Mumbai, IN</p>
+          <p>Mymensingh, Bangladesh</p>
         </div>
       </div>
 
       <div className="mt-20 flex justify-between items-center text-[10px] uppercase tracking-[0.3em] text-white/40">
-        <span>© 2026 Kushagra</span>
-        <span>Designed & built with care</span>
+        <span>© 2026 ARIFUL ISLAM</span>
+        <span>Designed & built with ❤️ and care </span>
       </div>
     </footer>
   );

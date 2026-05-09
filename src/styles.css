@@ -160,10 +160,66 @@
 }
 .marquee-track {
   display: inline-flex;
+  align-items: center;
   animation: marquee 40s linear infinite;
   white-space: nowrap;
   gap: 4rem;
 }
+
+.marquee-bullet {
+  display: inline-flex;
+  position: relative;
+  width: 0.75rem;
+  min-width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  background: var(--accent-red);
+  align-self: center;
+}
+
+.marquee-bullet::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: var(--accent-red);
+  opacity: 0.35;
+  animation: marquee-bullet-pulse 1.5s ease-in-out infinite;
+}
+
+.marquee-bullet::after {
+  content: "";
+  position: absolute;
+  inset: -0.2rem;
+  border-radius: 9999px;
+  border: 1px solid var(--accent-red);
+  opacity: 0.6;
+  transform: scale(0.95);
+  animation: marquee-bullet-ring 1.8s ease-in-out infinite;
+}
+
+@keyframes marquee-bullet-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+@keyframes marquee-bullet-ring {
+  0%, 100% {
+    transform: scale(0.95);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }

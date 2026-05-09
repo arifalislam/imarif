@@ -99,7 +99,10 @@ export function ProjectBlock({ index, title, description, meta, tags, image, cre
           <h2 className="pb-title font-display text-4xl md:text-6xl font-medium tracking-tight mb-6">
             {title}
           </h2>
-          <p className="pb-text text-white/65 max-w-md leading-relaxed mb-4">{description}</p>
+          <p
+            className="pb-text text-white/65 leading-relaxed text-justify my-6"
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
           <p className="pb-text text-xs uppercase tracking-[0.25em] text-white/40 mb-10">{meta}</p>
 
           <div className="flex flex-wrap gap-3 items-start">
@@ -120,7 +123,7 @@ export function ProjectBlock({ index, title, description, meta, tags, image, cre
         <div className="col-span-12 md:col-span-6 md:[direction:ltr] relative">
           <button
             onClick={onOpen}
-            className="group relative aspect-[4/5] overflow-hidden bg-black w-full block cursor-pointer"
+            className="group relative overflow-hidden bg-black w-full block cursor-pointer"
           >
             <img
               ref={imgRef}
@@ -129,7 +132,7 @@ export function ProjectBlock({ index, title, description, meta, tags, image, cre
               loading="lazy"
               width={1024}
               height={1280}
-              className="w-full h-full object-cover will-change-transform transition duration-700 group-hover:scale-105"
+              className="w-full h-auto object-cover will-change-transform transition duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition duration-500 flex items-center justify-center">
               <span className="opacity-0 group-hover:opacity-100 transition duration-500 translate-y-2 group-hover:translate-y-0 text-xs uppercase tracking-[0.3em] border border-white rounded-full px-6 py-3">

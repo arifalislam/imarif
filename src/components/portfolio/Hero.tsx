@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import heroImg from "@/assets/hero.jpg";
+import heroImg from "@/assets/hero.png";
 
 export function Hero() {
   const root = useRef<HTMLDivElement>(null);
@@ -47,16 +47,16 @@ export function Hero() {
           </div>
         </div>
         <div className="hidden md:flex col-span-3 flex-col items-end gap-3 text-right text-xs uppercase tracking-[0.25em] text-white/60">
-          <span className="hero-meta">Industrial Designer</span>
-          <span className="hero-meta">Based in Mumbai · 2026</span>
+          <span className="hero-meta">Digital Product Designer</span>
+          <span className="hero-meta">Based in Mymensingh · BD</span>
         </div>
       </div>
 
       <div className="hero-rule mt-10 h-px bg-white/20 w-full" />
       <div className="relative flex justify-between items-center mt-6 text-[10px] uppercase tracking-[0.3em] text-white/50">
-        <span className="hero-meta">Portfolio / Vol.04</span>
+        <span className="hero-meta">Portfolio / 2026</span>
         <span className="hero-meta hidden md:block">Scroll to explore ↓</span>
-        <span className="hero-meta">© Kushagra</span>
+        <span className="hero-meta">© A R I F</span>
       </div>
     </section>
   );

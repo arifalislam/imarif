@@ -48,7 +48,7 @@ export function About() {
   }, []);
 
   const text =
-    "I'm an industrial designer obsessed with the quiet decisions — the radius of an edge, the click of a button, the weight of a thing in your hand. My work lives where form, function and feeling collide.";
+    "I'm an enthusiasstis digital product designer obsessed with the quiet decisions — the radius of an edge, the click of a button, the weight of a thing in your hand. My work lives where form, function and feeling collide.";
 
   return (
     <section ref={root} id="about" className="relative px-6 md:px-10 py-32 md:py-48 border-t border-white/10">
@@ -67,10 +67,10 @@ export function About() {
 
           <div className="about-stats mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/10 pt-10">
             {[
-              { k: "06+", v: "Years designing" },
-              { k: "40", v: "Shipped products" },
-              { k: "12", v: "Awards" },
-              { k: "∞", v: "Cups of chai" },
+              { k: "05+", v: "Years Designing" },
+              { k: "25", v: "Shipped products" },
+              { k: "10", v: "Recognitions" },
+              { k: "99%", v: "Satisfaction" },
             ].map((s) => (
               <div key={s.v} className="about-stat">
                 <div className="font-display text-5xl md:text-6xl font-bold tracking-tight">{s.k}</div>

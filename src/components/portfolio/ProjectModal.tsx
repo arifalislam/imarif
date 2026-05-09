@@ -69,14 +69,14 @@ export function ProjectModal({ project, onClose }: Props) {
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-[100] invisible"
+      className="fixed inset-0 z-[100] invisible pointer-events-auto"
       style={{ visibility: "visible" }}
       onClick={handleClose}
     >
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm pointer-events-none" />
       <div
         ref={panelRef}
-        className="absolute top-0 right-0 h-full w-full bg-black border-l border-white/10 overflow-y-auto"
+        className="fixed top-0 right-0 h-screen w-full bg-black border-l border-white/10 overflow-y-scroll pointer-events-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -120,9 +120,10 @@ export function ProjectModal({ project, onClose }: Props) {
             </div>
             <div className="col-span-12 md:col-span-8">
               <p className="pm-anim text-xs uppercase tracking-[0.3em] text-white/40 mb-6">Overview</p>
-              <p className="pm-anim text-2xl md:text-3xl leading-relaxed font-light text-balance">
-                {project.description}
-              </p>
+              <p
+              className="pm-anim text-2xl md:text-3xl leading-relaxed font-light text-balance"
+              dangerouslySetInnerHTML={{ __html: project.description }}
+            />
               <p className="pm-anim mt-10 text-white/60 leading-relaxed">
                 {project.meta}. The process began with extensive market research, sketch exploration and rapid foam mockups before moving into CAD and final renders. Every detail — from the radius of each edge to the tactile feedback of every interaction — was tuned to feel inevitable.
               </p>
