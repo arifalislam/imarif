@@ -16,8 +16,8 @@ type Item = {
 const items: Item[] = [
   {
     year: "2024 — Present",
-    role: "Senior Product Designer",
-    company: "Chromatics AI",
+    role: "Sr. UI/UX Designer",
+    company: "JMI Group",
     location: "Remote",
     description:
       "Leading end-to-end design for AI-native social products. Shaping design systems, motion language and 0→1 product bets.",
@@ -25,8 +25,8 @@ const items: Item[] = [
   },
   {
     year: "2022 — 2024",
-    role: "Product Designer",
-    company: "JMI Enterprise",
+    role: "UXUI Designer",
+    company: "Notionhive",
     location: "New Delhi",
     description:
       "Owned the ERP redesign across inventory, finance and CRM modules. Partnered with engineering on a unified component library.",
