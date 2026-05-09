@@ -107,6 +107,7 @@ function Index() {
           />
         ))}
       </section>
+      <Experience />
       <Footer />
       <ProjectModal project={active} onClose={() => setActive(null)} />
     </main>
