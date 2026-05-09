@@ -104,6 +104,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/b2394d4e-a76d-4ab2-a0fa-8901481a3065",
       },
+      { name: "description", content: "Create dynamic personal portfolios with engaging motion effects and animations." },
+      { property: "og:description", content: "Create dynamic personal portfolios with engaging motion effects and animations." },
+      { name: "twitter:description", content: "Create dynamic personal portfolios with engaging motion effects and animations." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0411d079-cebb-4108-9e98-68e3e08c8ca3/id-preview-82b09619--0ffd21a9-f4b1-4d9c-ac0a-7157e9a21383.lovable.app-1778304920298.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0411d079-cebb-4108-9e98-68e3e08c8ca3/id-preview-82b09619--0ffd21a9-f4b1-4d9c-ac0a-7157e9a21383.lovable.app-1778304920298.png" },
     ],
     links: [
       {
