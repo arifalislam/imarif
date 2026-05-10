@@ -2,6 +2,16 @@ import p1 from "@/assets/beaver-ai.png";
 import p2 from "@/assets/jerp.png";
 import p3 from "@/assets/study-planner.png";
 
+export interface CaseStudySection {
+  body: string;
+  bullets?: string[];
+}
+
+export interface CaseStudyMetric {
+  value: string;
+  label: string;
+}
+
 export interface ProjectData {
   slug: string;
   index: string;
@@ -15,6 +25,10 @@ export interface ProjectData {
   gallery: string[];
   tags: { label: string; icon: string }[];
   credit?: string;
+  problem?: CaseStudySection;
+  research?: CaseStudySection;
+  solution?: CaseStudySection;
+  results?: { summary: string; metrics: CaseStudyMetric[] };
 }
 
 export const projects: ProjectData[] = [
