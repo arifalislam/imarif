@@ -139,8 +139,9 @@ export function ProjectBlock({
         </div>
 
         <div className="col-span-12 md:col-span-6 md:[direction:ltr] relative">
-          <button
-            onClick={onOpen}
+          <Link
+            to="/projects/$slug"
+            params={{ slug }}
             className="group relative overflow-hidden bg-black w-full block cursor-pointer"
           >
             <img
@@ -157,7 +158,7 @@ export function ProjectBlock({
                 View case →
               </span>
             </div>
-          </button>
+          </Link>
           {credit && (
             <p className="text-[10px] uppercase tracking-[0.25em] text-white/40 mt-4 text-right">
               {credit}
