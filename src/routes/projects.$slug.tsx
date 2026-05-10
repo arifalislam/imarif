@@ -203,6 +203,81 @@ function ProjectCaseStudy() {
           </div>
         </section>
 
+        {(project.problem || project.research || project.solution) && (
+          <section className="px-6 md:px-16 py-20 md:py-28 max-w-[1600px] mx-auto space-y-24 border-t border-white/10">
+            {[
+              { key: "01", label: "Problem", data: project.problem },
+              { key: "02", label: "Research", data: project.research },
+              { key: "03", label: "Solution", data: project.solution },
+            ]
+              .filter((s) => s.data)
+              .map((s) => (
+                <div
+                  key={s.label}
+                  className="cs-reveal grid grid-cols-12 gap-6 md:gap-10 items-start"
+                >
+                  <div className="col-span-12 md:col-span-4">
+                    <p className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">
+                      {s.key}
+                    </p>
+                    <h2 className="font-display text-3xl md:text-5xl font-medium tracking-tight">
+                      {s.label}
+                    </h2>
+                  </div>
+                  <div className="col-span-12 md:col-span-8 space-y-6">
+                    <p
+                      className="text-white/75 leading-relaxed text-lg md:text-xl text-balance"
+                      dangerouslySetInnerHTML={{ __html: s.data!.body }}
+                    />
+                    {s.data!.bullets && (
+                      <ul className="space-y-3 pt-2">
+                        {s.data!.bullets.map((b) => (
+                          <li
+                            key={b}
+                            className="flex gap-4 text-white/65 leading-relaxed border-t border-white/10 pt-3"
+                          >
+                            <span className="text-[color:var(--accent-red,#e85d3a)] mt-1">→</span>
+                            <span>{b}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </div>
+              ))}
+          </section>
+        )}
+
+        {project.results && (
+          <section className="px-6 md:px-16 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-white/10">
+            <div className="cs-reveal grid grid-cols-12 gap-6 md:gap-10 mb-16">
+              <div className="col-span-12 md:col-span-4">
+                <p className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">04</p>
+                <h2 className="font-display text-3xl md:text-5xl font-medium tracking-tight">
+                  Results
+                </h2>
+              </div>
+              <div className="col-span-12 md:col-span-8">
+                <p className="text-white/75 leading-relaxed text-lg md:text-xl text-balance">
+                  {project.results.summary}
+                </p>
+              </div>
+            </div>
+            <div className="cs-reveal grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 border border-white/10">
+              {project.results.metrics.map((m) => (
+                <div key={m.label} className="bg-black p-6 md:p-10">
+                  <p className="font-display text-4xl md:text-6xl font-medium tracking-tight text-[color:var(--accent-red,#e85d3a)]">
+                    {m.value}
+                  </p>
+                  <p className="mt-3 text-[10px] uppercase tracking-[0.25em] text-white/50">
+                    {m.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         <section className="grid grid-cols-1 md:grid-cols-2 gap-2 px-2 pb-20">
           {project.gallery.map((src, i) => (
             <div key={i} className="cs-reveal aspect-[4/3] overflow-hidden bg-white/5">
