@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Nav } from "@/components/portfolio/Nav";
 import { Footer } from "@/components/portfolio/Footer";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
-import { getProjectBySlug, projects } from "@/data/projects";
+import { getProjectBySlug, projects, type ProjectData } from "@/data/projects";
 
 gsap.registerPlugin(ScrollTrigger);
 
