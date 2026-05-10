@@ -68,7 +68,7 @@ export const Route = createFileRoute("/projects/$slug")({
 
 function ProjectCaseStudy() {
   useSmoothScroll();
-  const project = Route.useLoaderData();
+  const project = Route.useLoaderData() as ProjectData;
   const root = useRef<HTMLDivElement>(null);
   const heroImg = useRef<HTMLImageElement>(null);
 
