@@ -66,14 +66,47 @@ export const Route = createFileRoute("/projects/$slug")({
   component: ProjectCaseStudy,
 });
 
+const FALLBACK_SECTION: CaseStudySection = {
+  body: "Details for this section are being prepared and will be published soon.",
+  bullets: [],
+};
+
+const FALLBACK_RESULTS = {
+  summary: "Outcome metrics for this case study will be shared shortly.",
+  metrics: [] as CaseStudyMetric[],
+};
+
+function sanitizeProject(p: ProjectData): ProjectData {
+  return {
+    ...p,
+    description: p.description?.trim() || "Case study overview coming soon.",
+    meta: p.meta?.trim() || "Case study",
+    year: p.year || "—",
+    client: p.client || "—",
+    role: p.role || "—",
+    tags: Array.isArray(p.tags) ? p.tags : [],
+    gallery: Array.isArray(p.gallery) ? p.gallery.filter(Boolean) : [],
+    problem: p.problem ?? FALLBACK_SECTION,
+    research: p.research ?? FALLBACK_SECTION,
+    solution: p.solution ?? FALLBACK_SECTION,
+    results: p.results
+      ? {
+          summary: p.results.summary?.trim() || FALLBACK_RESULTS.summary,
+          metrics: Array.isArray(p.results.metrics) ? p.results.metrics : [],
+        }
+      : FALLBACK_RESULTS,
+  };
+}
+
 function ProjectCaseStudy() {
   useSmoothScroll();
-  const project = Route.useLoaderData() as ProjectData;
+  const raw = Route.useLoaderData() as ProjectData;
+  const project = sanitizeProject(raw);
   const root = useRef<HTMLDivElement>(null);
   const heroImg = useRef<HTMLImageElement>(null);
 
   const currentIndex = projects.findIndex((p) => p.slug === project.slug);
-  const next = projects[(currentIndex + 1) % projects.length];
+  const next = projects[(currentIndex + 1) % projects.length] ?? project;
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
