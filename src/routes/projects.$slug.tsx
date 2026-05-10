@@ -283,23 +283,23 @@ function ProjectCaseStudy() {
           ))}
         </section>
 
-        {project.results && (
-          <section className="px-6 md:px-16 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-white/10">
-            <div className="cs-reveal grid grid-cols-12 gap-6 md:gap-10 mb-16">
-              <div className="col-span-12 md:col-span-4">
-                <p className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">04</p>
-                <h2 className="font-display text-3xl md:text-5xl font-medium tracking-tight">
-                  Results
-                </h2>
-              </div>
-              <div className="col-span-12 md:col-span-8">
-                <p className="text-white/75 leading-relaxed text-lg md:text-xl text-balance">
-                  {project.results.summary}
-                </p>
-              </div>
+        <section className="px-6 md:px-16 py-20 md:py-28 max-w-[1600px] mx-auto border-t border-white/10">
+          <div className="cs-reveal grid grid-cols-12 gap-6 md:gap-10 mb-16">
+            <div className="col-span-12 md:col-span-4">
+              <p className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-3">04</p>
+              <h2 className="font-display text-3xl md:text-5xl font-medium tracking-tight">
+                Results
+              </h2>
             </div>
+            <div className="col-span-12 md:col-span-8">
+              <p className="text-white/75 leading-relaxed text-lg md:text-xl text-balance">
+                {project.results!.summary}
+              </p>
+            </div>
+          </div>
+          {project.results!.metrics.length > 0 && (
             <div className="cs-reveal grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 border border-white/10">
-              {project.results.metrics.map((m) => (
+              {project.results!.metrics.map((m) => (
                 <div key={m.label} className="bg-black p-6 md:p-10">
                   <p className="font-display text-4xl md:text-6xl font-medium tracking-tight text-[color:var(--accent-red,#e85d3a)]">
                     {m.value}
@@ -310,6 +310,21 @@ function ProjectCaseStudy() {
                 </div>
               ))}
             </div>
+          )}
+        </section>
+
+        {project.gallery.length > 0 && (
+          <section className="grid grid-cols-1 md:grid-cols-2 gap-2 px-2 pb-20">
+            {project.gallery.map((src, i) => (
+              <div key={i} className="cs-reveal aspect-[4/3] overflow-hidden bg-white/5">
+                <img
+                  src={src}
+                  alt={`${project.title} — visual ${i + 1}`}
+                  loading="lazy"
+                  className="w-full h-full object-cover hover:scale-105 transition duration-700"
+                />
+              </div>
+            ))}
           </section>
         )}
 
