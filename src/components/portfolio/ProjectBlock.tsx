@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "@tanstack/react-router";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,7 +16,7 @@ interface Props {
   image: string;
   credit?: string;
   reverse?: boolean;
-  onOpen?: () => void;
+  slug: string;
 }
 
 export function ProjectBlock({
@@ -27,7 +28,7 @@ export function ProjectBlock({
   image,
   credit,
   reverse,
-  onOpen,
+  slug,
 }: Props) {
   const root = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -138,8 +139,9 @@ export function ProjectBlock({
         </div>
 
         <div className="col-span-12 md:col-span-6 md:[direction:ltr] relative">
-          <button
-            onClick={onOpen}
+          <Link
+            to="/projects/$slug"
+            params={{ slug }}
             className="group relative overflow-hidden bg-black w-full block cursor-pointer"
           >
             <img
@@ -156,7 +158,7 @@ export function ProjectBlock({
                 View case →
               </span>
             </div>
-          </button>
+          </Link>
           {credit && (
             <p className="text-[10px] uppercase tracking-[0.25em] text-white/40 mt-4 text-right">
               {credit}
