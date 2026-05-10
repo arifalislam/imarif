@@ -314,18 +314,6 @@ function ProjectCaseStudy() {
         </section>
 
         {project.gallery.length > 0 && (
-          <section className="grid grid-cols-1 md:grid-cols-2 gap-2 px-2 pb-20">
-            {project.gallery.map((src, i) => (
-              <div key={i} className="cs-reveal aspect-[4/3] overflow-hidden bg-white/5">
-                <img
-                  src={src}
-                  alt={`${project.title} — visual ${i + 1}`}
-                  loading="lazy"
-                  className="w-full h-full object-cover hover:scale-105 transition duration-700"
-                />
-              </div>
-            ))}
-          </section>
         )}
 
         <section className="grid grid-cols-1 md:grid-cols-2 gap-2 px-2 pb-20">
