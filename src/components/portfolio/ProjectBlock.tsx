@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "@tanstack/react-router";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,7 +16,7 @@ interface Props {
   image: string;
   credit?: string;
   reverse?: boolean;
-  onOpen?: () => void;
+  slug: string;
 }
 
 export function ProjectBlock({
@@ -27,7 +28,7 @@ export function ProjectBlock({
   image,
   credit,
   reverse,
-  onOpen,
+  slug,
 }: Props) {
   const root = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
