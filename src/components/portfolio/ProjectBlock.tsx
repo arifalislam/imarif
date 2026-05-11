@@ -134,7 +134,7 @@ export function ProjectBlock({
                 key={t.label}
                 className="pb-tag group/tag flex flex-col items-center gap-2 text-center w-20 cursor-default"
               >
-                <div className="pb-tag-icon w-12 h-12 rounded-full border border-white/90 bg-white/5 backdrop-blur-md flex items-center justify-center text-base text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_4px_16px_rgba(0,0,0,0.45)] ring-1 ring-black/40 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/tag:scale-110 group-hover/tag:border-[color:var(--accent-red)] group-hover/tag:bg-white/10 group-hover/tag:shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_8px_24px_rgba(239,68,68,0.25)] group-hover/tag:-translate-y-0.5">
+                <div className="pb-tag-icon w-12 h-12 rounded-full border border-white/90 bg-white/5 backdrop-blur-md flex items-center justify-center text-base text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_4px_16px_rgba(0,0,0,0.45)] ring-1 ring-black/40 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/tag:scale-110 group-hover/tag:border-[color:var(--accent-red)] group-hover/tag:bg-white/10 group-hover/tag:shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_8px_24px_var(--accent-glow)] group-hover/tag:-translate-y-0.5">
                   {t.icon}
                 </div>
                 <span className="text-[10px] uppercase tracking-[0.15em] text-white/60 leading-tight transition-colors duration-500 group-hover/tag:text-white">

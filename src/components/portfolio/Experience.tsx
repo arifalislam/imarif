@@ -184,6 +184,14 @@ export function Experience() {
             const isActive = active === i;
             return (
               <li key={i} className="exp-row relative">
+                {/* Active accent bar */}
+                <span
+                  aria-hidden="true"
+                  className={`pointer-events-none absolute left-0 top-0 bottom-0 w-[2px] origin-top transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] bg-[color:var(--accent-red)] ${
+                    isActive ? "scale-y-100" : "scale-y-0"
+                  }`}
+                  style={isActive ? { boxShadow: "0 0 24px var(--accent-glow)" } : undefined}
+                />
                 <button
                   ref={(el) => {
                     rowRefs.current[i] = el;
@@ -198,23 +206,30 @@ export function Experience() {
                   onClick={() => setActive(i)}
                   onFocus={() => setActive(i)}
                   onKeyDown={(e) => onKeyDown(e, i)}
-                  className={`group w-full text-left grid grid-cols-12 gap-6 md:gap-10 py-8 md:py-10 border-t border-white/10 transition-colors duration-500 outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-red)] focus-visible:ring-offset-2 focus-visible:ring-offset-black ${
-                    isActive ? "bg-white/[0.03]" : "hover:bg-white/[0.02]"
+                  className={`group relative w-full text-left grid grid-cols-12 gap-6 md:gap-10 py-8 md:py-10 px-4 md:px-6 border-t border-white/10 transition-all duration-500 outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-red)] focus-visible:ring-offset-2 focus-visible:ring-offset-black ${
+                    isActive
+                      ? "bg-gradient-to-r from-white/[0.04] via-white/[0.02] to-transparent"
+                      : "hover:bg-white/[0.02] hover:translate-x-1"
                   }`}
                 >
-                  {/* Year + dot */}
+                  {/* Year + dot + index */}
                   <div className="col-span-12 md:col-span-3 flex items-start gap-3">
                     <span
                       aria-hidden="true"
                       className={`mt-2 h-2 w-2 rounded-full transition-all duration-500 ${
                         isActive
-                          ? "bg-[color:var(--accent-red)] shadow-[0_0_0_4px_rgba(239,68,68,0.15)]"
+                          ? "bg-[color:var(--accent-red)] shadow-[0_0_0_4px_var(--accent-glow-soft)]"
                           : "bg-white/30 group-hover:bg-white/60"
                       }`}
                     />
-                    <p className="text-xs uppercase tracking-[0.25em] text-white/50">
-                      {item.year}
-                    </p>
+                    <div className="flex flex-col">
+                      <span className="text-[10px] font-mono tracking-[0.2em] text-white/30">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <p className="mt-1 text-xs uppercase tracking-[0.25em] text-white/50">
+                        {item.year}
+                      </p>
+                    </div>
                   </div>
 
                   {/* Role */}
@@ -236,9 +251,9 @@ export function Experience() {
                   <div className="col-span-12 md:col-span-4 flex md:justify-end items-start">
                     <span
                       aria-hidden="true"
-                      className={`font-display text-2xl transition-transform duration-500 ${
+                      className={`font-display text-2xl transition-all duration-500 ${
                         isActive
-                          ? "rotate-90 text-[color:var(--accent-red)]"
+                          ? "rotate-90 text-[color:var(--accent-red)] drop-shadow-[0_0_12px_var(--accent-glow)]"
                           : "text-white/30 group-hover:translate-x-1 group-hover:text-white/70"
                       }`}
                     >
@@ -253,7 +268,7 @@ export function Experience() {
                   role="tabpanel"
                   aria-labelledby={`exp-tab-${i}`}
                   hidden={!isActive}
-                  className="grid grid-cols-12 gap-6 md:gap-10 pb-10 md:pb-12"
+                  className="grid grid-cols-12 gap-6 md:gap-10 pb-10 md:pb-12 px-4 md:px-6"
                 >
                   <div className="col-span-12 md:col-start-4 md:col-span-9">
                     <p className="text-white/70 leading-relaxed text-base md:text-lg max-w-2xl">
@@ -263,7 +278,7 @@ export function Experience() {
                       {item.highlights.map((h) => (
                         <li
                           key={h}
-                          className="text-[10px] uppercase tracking-[0.2em] text-white/60 border border-white/15 rounded-full px-3 py-1.5"
+                          className="text-[10px] uppercase tracking-[0.2em] text-white/70 border border-white/15 rounded-full px-3 py-1.5 bg-white/[0.02] transition-all duration-300 hover:text-white hover:border-[color:var(--accent-red)] hover:bg-[color:var(--accent-red)]/10 hover:-translate-y-0.5"
                         >
                           {h}
                         </li>
