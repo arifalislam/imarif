@@ -119,15 +119,12 @@ export function ProjectBlock({
           <p className="pb-text text-xs uppercase tracking-[0.25em] text-white/40 mb-10">{meta}</p>
 
           <div className="flex flex-wrap gap-3 items-start">
-            <span className="pb-tag text-xs uppercase tracking-[0.2em] text-white/40 self-center mr-2">
-              My role
-            </span>
             {tags.map((t) => (
               <div
                 key={t.label}
                 className="pb-tag flex flex-col items-center gap-2 text-center w-20"
               >
-                <div className="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center text-base">
+                <div className="w-12 h-12 rounded-full border-2 border-white/80 bg-gradient-to-br from-white via-neutral-400 to-neutral-900 flex items-center justify-center text-base text-black shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
                   {t.icon}
                 </div>
                 <span className="text-[10px] uppercase tracking-[0.15em] text-white/60 leading-tight">
