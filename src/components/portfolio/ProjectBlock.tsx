@@ -124,7 +124,7 @@ export function ProjectBlock({
                 key={t.label}
                 className="pb-tag flex flex-col items-center gap-2 text-center w-20"
               >
-                <div className="w-12 h-12 rounded-full border-2 border-white/80 bg-gradient-to-br from-white via-neutral-400 to-neutral-900 flex items-center justify-center text-base text-black shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
+                <div className="w-12 h-12 rounded-full border border-white/90 bg-white/5 backdrop-blur-md flex items-center justify-center text-base text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_4px_16px_rgba(0,0,0,0.45)] ring-1 ring-black/40">
                   {t.icon}
                 </div>
                 <span className="text-[10px] uppercase tracking-[0.15em] text-white/60 leading-tight">
