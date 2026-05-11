@@ -299,16 +299,20 @@ function ProjectCaseStudy() {
           </div>
           {project.results!.metrics.length > 0 && (
             <div className="cs-reveal grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 border border-white/10">
-              {project.results!.metrics.map((m) => (
-                <div key={m.label} className="bg-black p-6 md:p-10">
-                  <p className="font-display text-4xl md:text-6xl font-medium tracking-tight text-[color:var(--accent-red,#e85d3a)]">
-                    {m.value}
-                  </p>
-                  <p className="mt-3 text-[10px] uppercase tracking-[0.25em] text-white/50">
-                    {m.label}
-                  </p>
-                </div>
-              ))}
+              {project.results!.metrics.map((m, i) => {
+                const value = m?.value?.toString().trim() || "—";
+                const label = m?.label?.toString().trim() || "Metric";
+                return (
+                  <div key={`${label}-${i}`} className="bg-black p-6 md:p-10">
+                    <p className="font-display text-4xl md:text-6xl font-medium tracking-tight text-[color:var(--accent-red,#e85d3a)]">
+                      {value}
+                    </p>
+                    <p className="mt-3 text-[10px] uppercase tracking-[0.25em] text-white/50">
+                      {label}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           )}
         </section>
