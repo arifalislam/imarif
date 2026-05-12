@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ChevronDown } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -173,13 +174,7 @@ export function Experience() {
         aria-orientation="vertical"
         aria-label="Career timeline"
       >
-        {/* Timeline rail */}
-        <div className="hidden md:block col-span-1 relative" aria-hidden="true">
-          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/10 -translate-x-1/2" />
-          <div className="exp-rule absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[color:var(--accent-red)] via-white/60 to-transparent -translate-x-1/2 origin-top" />
-        </div>
-
-        <ol className="col-span-12 md:col-span-11 list-none p-0 m-0">
+        <ol className="col-span-12 list-none p-0 m-0">
           {items.map((item, i) => {
             const isActive = active === i;
             return (
@@ -237,18 +232,16 @@ export function Experience() {
                     </p>
                   </div>
 
-                  {/* Arrow indicator */}
+                  {/* Chevron indicator */}
                   <div className="col-span-12 md:col-span-4 flex md:justify-end items-start">
-                    <span
+                    <ChevronDown
                       aria-hidden="true"
-                      className={`font-display text-2xl transition-all duration-500 ${
+                      className={`h-6 w-6 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                         isActive
-                          ? "rotate-90 text-[color:var(--accent-red)] drop-shadow-[0_0_12px_var(--accent-glow)]"
-                          : "text-white/30 group-hover:translate-x-1 group-hover:text-white/70"
+                          ? "rotate-180 text-[color:var(--accent-red)] drop-shadow-[0_0_12px_var(--accent-glow)]"
+                          : "text-white/30 group-hover:text-white/70"
                       }`}
-                    >
-                      →
-                    </span>
+                    />
                   </div>
                 </button>
 
