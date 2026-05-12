@@ -199,9 +199,7 @@ export function Experience() {
                   onFocus={() => setActive(i)}
                   onKeyDown={(e) => onKeyDown(e, i)}
                   className={`group relative w-full text-left grid grid-cols-12 gap-6 md:gap-10 py-8 md:py-10 px-4 md:px-6 border-t border-white/10 transition-all duration-500 outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-red)] focus-visible:ring-offset-2 focus-visible:ring-offset-black ${
-                    isActive
-                      ? "bg-gradient-to-r from-white/[0.04] via-white/[0.02] to-transparent"
-                      : "hover:bg-white/[0.02] hover:translate-x-1"
+                    isActive ? "" : "hover:bg-white/[0.02] hover:translate-x-1"
                   }`}
                 >
                   {/* Year + dot + index */}
