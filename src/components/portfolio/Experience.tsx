@@ -250,23 +250,35 @@ export function Experience() {
                   id={`exp-panel-${i}`}
                   role="tabpanel"
                   aria-labelledby={`exp-tab-${i}`}
-                  hidden={!isActive}
-                  className="grid grid-cols-12 gap-6 md:gap-10 pb-10 md:pb-12 px-4 md:px-6"
+                  aria-hidden={!isActive}
+                  className={`grid transition-[grid-template-rows,opacity] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                    isActive
+                      ? "grid-rows-[1fr] opacity-100"
+                      : "grid-rows-[0fr] opacity-0 pointer-events-none"
+                  }`}
                 >
-                  <div className="col-span-12 md:col-start-4 md:col-span-9">
-                    <p className="text-white/70 leading-relaxed text-base md:text-lg max-w-2xl">
-                      {item.description}
-                    </p>
-                    <ul className="flex flex-wrap gap-2 mt-6 list-none p-0">
-                      {item.highlights.map((h) => (
-                        <li
-                          key={h}
-                          className="text-[10px] uppercase tracking-[0.2em] text-white/70 border border-white/15 rounded-full px-3 py-1.5 bg-white/[0.02] transition-all duration-300 hover:text-white hover:border-[color:var(--accent-red)] hover:bg-[color:var(--accent-red)]/10 hover:-translate-y-0.5"
-                        >
-                          {h}
-                        </li>
-                      ))}
-                    </ul>
+                  <div className="overflow-hidden">
+                    <div
+                      className={`grid grid-cols-12 gap-6 md:gap-10 pb-10 md:pb-12 px-4 md:px-6 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                        isActive ? "translate-y-0 opacity-100 delay-100" : "-translate-y-2 opacity-0"
+                      }`}
+                    >
+                      <div className="col-span-12 md:col-start-4 md:col-span-9">
+                        <p className="text-white/70 leading-relaxed text-base md:text-lg max-w-2xl">
+                          {item.description}
+                        </p>
+                        <ul className="flex flex-wrap gap-2 mt-6 list-none p-0">
+                          {item.highlights.map((h) => (
+                            <li
+                              key={h}
+                              className="text-[10px] uppercase tracking-[0.2em] text-white/70 border border-white/15 rounded-full px-3 py-1.5 bg-white/[0.02] transition-all duration-300 hover:text-white hover:border-[color:var(--accent-red)] hover:bg-[color:var(--accent-red)]/10 hover:-translate-y-0.5"
+                            >
+                              {h}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </li>
