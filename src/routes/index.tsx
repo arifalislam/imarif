@@ -5,6 +5,7 @@ import { Marquee } from "@/components/portfolio/Marquee";
 import { ProjectBlock } from "@/components/portfolio/ProjectBlock";
 import { About } from "@/components/portfolio/About";
 import { Experience } from "@/components/portfolio/Experience";
+import { Process } from "@/components/portfolio/Process";
 import { Footer } from "@/components/portfolio/Footer";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 import { projects } from "@/data/projects";
