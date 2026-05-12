@@ -52,6 +52,7 @@ function Index() {
         ))}
       </section>
       <Experience />
+      <Process />
       <Footer />
     </main>
   );
