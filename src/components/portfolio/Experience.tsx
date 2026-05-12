@@ -184,14 +184,6 @@ export function Experience() {
             const isActive = active === i;
             return (
               <li key={i} className="exp-row relative">
-                {/* Active accent bar */}
-                <span
-                  aria-hidden="true"
-                  className={`pointer-events-none absolute left-0 top-0 bottom-0 w-[2px] origin-top transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] bg-[color:var(--accent-red)] ${
-                    isActive ? "scale-y-100" : "scale-y-0"
-                  }`}
-                  style={isActive ? { boxShadow: "0 0 24px var(--accent-glow)" } : undefined}
-                />
                 <button
                   ref={(el) => {
                     rowRefs.current[i] = el;
