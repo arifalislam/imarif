@@ -120,63 +120,60 @@ export function Process() {
         </div>
       </div>
 
-      <ol className="proc-grid relative grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 list-none p-0 m-0">
+      <ol className="proc-grid relative grid grid-cols-1 md:grid-cols-4 border-t border-b border-white/10 list-none p-0 m-0">
         {steps.map((s, i) => {
           const Icon = s.icon;
           return (
             <li
               key={s.step}
-              className="proc-card group relative border border-white/10 rounded-2xl p-6 md:p-8 bg-white/[0.015] backdrop-blur-sm transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-white/25 hover:bg-white/[0.03] hover:-translate-y-1"
+              className="proc-card group relative flex flex-col p-6 md:p-8 border-white/10 md:border-l first:md:border-l-0 border-t md:border-t-0 transition-colors duration-500 hover:bg-white/[0.025]"
             >
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{
-                  boxShadow: "0 30px 80px -30px var(--accent-glow)",
-                }}
-              />
-
-              <div className="relative flex items-start justify-between mb-8">
-                <div className="flex items-center gap-4">
-                  <div className="relative h-12 w-12 rounded-full border border-white/15 flex items-center justify-center bg-gradient-to-br from-white/10 to-white/[0.02] transition-all duration-500 group-hover:border-white/30">
-                    <Icon
-                      className="h-5 w-5 text-white/70 transition-colors duration-300 group-hover:text-[color:var(--accent-red)]"
-                    />
-                  </div>
-                  <span className="text-[10px] font-mono tracking-[0.25em] text-white/40">
-                    STEP / {s.step}
-                  </span>
-                </div>
-                <span
-                  aria-hidden="true"
-                  className="font-display text-5xl md:text-6xl text-white/[0.06] leading-none transition-colors duration-500 group-hover:text-white/[0.12]"
-                >
-                  {String(i + 1).padStart(2, "0")}
+              {/* Top: step number + icon */}
+              <div className="flex items-center justify-between mb-10 md:mb-14">
+                <span className="text-[10px] font-mono tracking-[0.25em] text-white/40">
+                  / {s.step}
                 </span>
+                <div className="relative h-10 w-10 rounded-full border border-white/15 flex items-center justify-center bg-gradient-to-br from-white/10 to-white/[0.02] transition-all duration-500 group-hover:border-[color:var(--accent-red)]/60">
+                  <Icon className="h-4 w-4 text-white/70 transition-colors duration-300 group-hover:text-[color:var(--accent-red)]" />
+                </div>
               </div>
 
-              <div className="relative">
-                <h3 className="font-display text-2xl md:text-3xl font-medium tracking-tight text-white">
-                  {s.title}
-                </h3>
-                <p className="mt-1 text-sm text-[color:var(--accent-red)] uppercase tracking-[0.2em]">
-                  {s.subtitle}
-                </p>
-                <p className="mt-5 text-white/65 leading-relaxed text-base max-w-xl">
-                  {s.description}
-                </p>
+              {/* Big numeral */}
+              <span
+                aria-hidden="true"
+                className="font-display text-6xl md:text-7xl text-white/[0.08] leading-none mb-6 transition-colors duration-500 group-hover:text-white/[0.18]"
+              >
+                {String(i + 1).padStart(2, "0")}
+              </span>
 
-                <ul className="flex flex-wrap gap-2 mt-6 list-none p-0">
-                  {s.deliverables.map((d) => (
-                    <li
-                      key={d}
-                      className="text-[10px] uppercase tracking-[0.2em] text-white/70 border border-white/15 rounded-full px-3 py-1.5 bg-white/[0.02] transition-all duration-300 group-hover:border-white/25"
-                    >
-                      {d}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {/* Body */}
+              <h3 className="font-display text-xl md:text-2xl font-medium tracking-tight text-white">
+                {s.title}
+              </h3>
+              <p className="mt-1 text-[10px] md:text-[11px] text-[color:var(--accent-red)] uppercase tracking-[0.2em]">
+                {s.subtitle}
+              </p>
+              <p className="mt-4 text-white/60 leading-relaxed text-sm">
+                {s.description}
+              </p>
+
+              <ul className="flex flex-wrap gap-1.5 mt-6 list-none p-0">
+                {s.deliverables.map((d) => (
+                  <li
+                    key={d}
+                    className="text-[9px] uppercase tracking-[0.2em] text-white/60 border border-white/10 rounded-full px-2.5 py-1 transition-all duration-300 group-hover:border-white/25 group-hover:text-white/80"
+                  >
+                    {d}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Bottom accent line */}
+              <span
+                aria-hidden="true"
+                className="absolute left-0 bottom-0 h-px w-0 bg-[color:var(--accent-red)] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full"
+                style={{ boxShadow: "0 0 16px var(--accent-glow)" }}
+              />
             </li>
           );
         })}
