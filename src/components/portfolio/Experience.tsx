@@ -174,13 +174,7 @@ export function Experience() {
         aria-orientation="vertical"
         aria-label="Career timeline"
       >
-        {/* Timeline rail */}
-        <div className="hidden md:block col-span-1 relative" aria-hidden="true">
-          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/10 -translate-x-1/2" />
-          <div className="exp-rule absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[color:var(--accent-red)] via-white/60 to-transparent -translate-x-1/2 origin-top" />
-        </div>
-
-        <ol className="col-span-12 md:col-span-11 list-none p-0 m-0">
+        <ol className="col-span-12 list-none p-0 m-0">
           {items.map((item, i) => {
             const isActive = active === i;
             return (
