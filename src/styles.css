@@ -67,10 +67,10 @@
   --background: oklch(0.04 0 0);
   --foreground: oklch(0.98 0 0);
   /* Portfolio highlight color — change here to retheme the entire portfolio accent */
-  --accent-red: oklch(0.66 0.14 25);
-  --accent-red-rgb: 200 110 100; /* rgb channels for rgba()/rgb() with alpha */
-  --accent-glow: rgb(var(--accent-red-rgb) / 0.14);
-  --accent-glow-soft: rgb(var(--accent-red-rgb) / 0.08);
+  --accent-red: oklch(0.62 0.24 25);
+  --accent-red-rgb: 239 68 68; /* rgb channels for rgba()/rgb() with alpha */
+  --accent-glow: rgb(var(--accent-red-rgb) / 0.25);
+  --accent-glow-soft: rgb(var(--accent-red-rgb) / 0.15);
   --hairline: oklch(1 0 0 / 18%);
   --font-display: "Space Grotesk", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
