@@ -64,13 +64,15 @@ const steps: Step[] = [
 
 export function Process() {
   const root = useRef<HTMLDivElement>(null);
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [detailsOpen, setDetailsOpen] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const ctx = gsap.context(() => {
       if (reduce) {
-        gsap.set([".proc-head", ".proc-card"], { opacity: 1, y: 0 });
+        gsap.set([".proc-head", ".proc-rail", ".proc-panel"], { opacity: 1, y: 0 });
         return;
       }
 
@@ -83,17 +85,45 @@ export function Process() {
         stagger: 0.08,
       });
 
-      gsap.from(".proc-card", {
-        scrollTrigger: { trigger: ".proc-grid", start: "top 80%" },
-        y: 50,
+      gsap.from(".proc-rail", {
+        scrollTrigger: { trigger: ".proc-shell", start: "top 80%" },
+        x: -20,
         opacity: 0,
         duration: 0.9,
         ease: "expo.out",
-        stagger: 0.12,
+      });
+
+      gsap.from(".proc-panel", {
+        scrollTrigger: { trigger: ".proc-shell", start: "top 80%" },
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        ease: "expo.out",
+        delay: 0.15,
       });
     }, root);
     return () => ctx.revert();
   }, []);
+
+  // Crossfade animation when active step changes
+  useEffect(() => {
+    if (!panelRef.current) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+    gsap.fromTo(
+      panelRef.current,
+      { opacity: 0, y: 12 },
+      { opacity: 1, y: 0, duration: 0.6, ease: "expo.out" },
+    );
+  }, [activeIndex]);
+
+  // Reset expanded details when switching steps
+  useEffect(() => {
+    setDetailsOpen(false);
+  }, [activeIndex]);
+
+  const active = steps[activeIndex];
+  const ActiveIcon = active.icon;
 
   return (
     <section
@@ -130,132 +160,173 @@ export function Process() {
         </div>
       </div>
 
-      <ol className="proc-grid relative grid grid-cols-1 md:grid-cols-4 border-t border-b border-white/10 list-none p-0 m-0">
-        {steps.map((s, i) => {
-          const Icon = s.icon;
-          const isOpen = openIndex === i;
-          const panelId = `process-panel-${i}`;
-          return (
-            <li
-              key={s.step}
-              className="proc-card group relative border-white/10 md:border-l first:md:border-l-0 border-t md:border-t-0"
+      <div className="proc-shell relative grid grid-cols-1 md:grid-cols-12 border-t border-white/10">
+        {/* Sticky index rail */}
+        <aside className="proc-rail md:col-span-4 lg:col-span-3 border-b md:border-b-0 md:border-r border-white/10">
+          <div className="md:sticky md:top-24 p-6 md:p-8">
+            <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-white/30 mb-8">
+              / Index
+            </p>
+            <nav aria-label="Process steps">
+              <ul className="relative list-none p-0 m-0 flex flex-row md:flex-col gap-1 overflow-x-auto md:overflow-visible">
+                {steps.map((s, i) => {
+                  const isActive = activeIndex === i;
+                  return (
+                    <li key={s.step} className="shrink-0 md:shrink">
+                      <button
+                        type="button"
+                        onClick={() => setActiveIndex(i)}
+                        aria-current={isActive ? "step" : undefined}
+                        className={`group relative w-full text-left flex items-center gap-4 py-3 md:py-4 pr-4 transition-colors duration-500 focus:outline-none`}
+                      >
+                        {/* Active red bar */}
+                        <span
+                          aria-hidden="true"
+                          className={`hidden md:block absolute left-0 top-1/2 -translate-y-1/2 h-6 w-px transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                            isActive
+                              ? "bg-[color:var(--accent-red)] opacity-100"
+                              : "bg-white/30 opacity-0 group-hover:opacity-60"
+                          }`}
+                          style={isActive ? { boxShadow: "0 0 12px var(--accent-glow)" } : undefined}
+                        />
+                        <span
+                          className={`pl-4 font-mono text-[11px] tracking-[0.2em] transition-colors duration-300 ${
+                            isActive
+                              ? "text-[color:var(--accent-red)]"
+                              : "text-white/40 group-hover:text-white/70"
+                          }`}
+                          style={isActive ? { textShadow: "0 0 10px var(--accent-glow)" } : undefined}
+                        >
+                          {s.step}
+                        </span>
+                        <span
+                          className={`text-[11px] uppercase tracking-[0.25em] font-medium transition-colors duration-300 ${
+                            isActive
+                              ? "text-white"
+                              : "text-white/40 group-hover:text-white/80"
+                          }`}
+                        >
+                          {s.title}
+                        </span>
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
+          </div>
+        </aside>
+
+        {/* Detail panel */}
+        <div className="proc-panel md:col-span-8 lg:col-span-9 relative">
+          <div ref={panelRef} className="relative p-6 md:p-12 lg:p-16">
+            {/* Background big numeral */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -top-4 right-4 md:right-8 font-display italic text-white/[0.04] text-[10rem] md:text-[16rem] leading-none select-none"
             >
-              <button
-                type="button"
-                onClick={() => setOpenIndex(isOpen ? null : i)}
-                aria-expanded={isOpen}
-                aria-controls={panelId}
-                className={`relative w-full text-left flex flex-col p-6 md:p-8 transition-colors duration-500 hover:bg-white/[0.025] focus:outline-none focus-visible:bg-white/[0.03] ${
-                  isOpen ? "bg-white/[0.03]" : ""
-                }`}
-              >
-                {/* Top: step number + icon */}
-                <div className="flex items-center justify-between mb-10 md:mb-14">
-                  <span className="text-[10px] font-mono tracking-[0.25em] text-white/40">
-                    / {s.step}
-                  </span>
-                  <div
-                    className={`relative h-10 w-10 rounded-full border flex items-center justify-center bg-gradient-to-br from-white/10 to-white/[0.02] transition-all duration-500 ${
-                      isOpen
-                        ? "border-[color:var(--accent-red)]/60"
-                        : "border-white/15 group-hover:border-[color:var(--accent-red)]/60"
-                    }`}
-                  >
-                    <Icon
-                      className={`h-4 w-4 transition-colors duration-300 ${
-                        isOpen
-                          ? "text-[color:var(--accent-red)]"
-                          : "text-white/70 group-hover:text-[color:var(--accent-red)]"
-                      }`}
-                    />
-                  </div>
+              {active.step}
+            </span>
+
+            <div className="relative">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="relative h-11 w-11 rounded-full border border-[color:var(--accent-red)]/40 bg-gradient-to-br from-white/10 to-white/[0.02] flex items-center justify-center">
+                  <ActiveIcon className="h-4 w-4 text-[color:var(--accent-red)]" />
                 </div>
-
-                {/* Big numeral */}
-                <span
-                  aria-hidden="true"
-                  className={`font-display text-6xl md:text-7xl leading-none mb-6 transition-colors duration-500 ${
-                    isOpen ? "text-white/[0.18]" : "text-white/[0.08] group-hover:text-white/[0.18]"
-                  }`}
-                >
-                  {String(i + 1).padStart(2, "0")}
+                <span className="font-mono text-[10px] tracking-[0.3em] text-white/30">
+                  / {active.step}
                 </span>
+              </div>
 
-                {/* Body */}
-                <h3 className="font-display text-xl md:text-2xl font-medium tracking-tight text-white">
-                  {s.title}
-                </h3>
-                <p className="mt-1 text-[10px] md:text-[11px] text-[color:var(--accent-red)] uppercase tracking-[0.2em]">
-                  {s.subtitle}
-                </p>
-                <p className="mt-4 text-white/60 leading-relaxed text-sm">
-                  {s.description}
-                </p>
+              <h3 className="font-display text-3xl md:text-5xl font-medium tracking-tight text-white mb-3">
+                {active.title}
+              </h3>
+              <p
+                className="text-[10px] md:text-[11px] text-[color:var(--accent-red)] uppercase tracking-[0.25em] mb-8"
+                style={{ textShadow: "0 0 12px var(--accent-glow)" }}
+              >
+                {active.subtitle}
+              </p>
 
-                <ul className="flex flex-wrap gap-1.5 mt-6 list-none p-0">
-                  {s.deliverables.map((d) => (
+              <p className="text-white/65 leading-relaxed text-base md:text-lg max-w-xl mb-10">
+                {active.description}
+              </p>
+
+              <div className="mb-8">
+                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">
+                  Key deliverables
+                </p>
+                <ul className="flex flex-wrap gap-2 list-none p-0">
+                  {active.deliverables.map((d) => (
                     <li
                       key={d}
-                      className="text-[9px] uppercase tracking-[0.2em] text-white/60 border border-white/10 rounded-full px-2.5 py-1 transition-all duration-300 group-hover:border-white/25 group-hover:text-white/80"
+                      className="text-[10px] uppercase tracking-[0.2em] text-white/70 border border-white/10 bg-white/[0.02] rounded-full px-3 py-1.5"
                     >
                       {d}
                     </li>
                   ))}
                 </ul>
+              </div>
 
-                {/* Expandable details */}
-                <div
-                  id={panelId}
-                  className={`grid transition-[grid-template-rows,opacity,margin] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                    isOpen
-                      ? "grid-rows-[1fr] opacity-100 mt-6"
-                      : "grid-rows-[0fr] opacity-0 mt-0"
-                  }`}
-                >
-                  <div className="overflow-hidden">
-                    <div
-                      className={`pt-5 border-t border-white/10 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                        isOpen ? "translate-y-0 opacity-100 delay-100" : "-translate-y-1 opacity-0"
-                      }`}
-                    >
-                      <p className="text-[11px] uppercase tracking-[0.25em] text-white/40 mb-2">
-                        What it looks like
-                      </p>
-                      <p className="text-white/70 leading-relaxed text-sm">
-                        {s.details}
-                      </p>
-                    </div>
+              {/* Expandable extra detail */}
+              <div
+                id={`process-panel-details-${activeIndex}`}
+                className={`grid transition-[grid-template-rows,opacity,margin] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                  detailsOpen
+                    ? "grid-rows-[1fr] opacity-100 mt-2"
+                    : "grid-rows-[0fr] opacity-0 mt-0"
+                }`}
+              >
+                <div className="overflow-hidden">
+                  <div
+                    className={`pt-6 border-t border-white/10 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                      detailsOpen ? "translate-y-0 opacity-100 delay-100" : "-translate-y-1 opacity-0"
+                    }`}
+                  >
+                    <p className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-2">
+                      What it looks like
+                    </p>
+                    <p className="text-white/70 leading-relaxed text-sm md:text-base max-w-xl">
+                      {active.details}
+                    </p>
                   </div>
                 </div>
+              </div>
 
-                {/* Toggle indicator */}
+              <button
+                type="button"
+                onClick={() => setDetailsOpen((o) => !o)}
+                aria-expanded={detailsOpen}
+                aria-controls={`process-panel-details-${activeIndex}`}
+                className="mt-6 inline-flex items-center gap-2 group focus:outline-none"
+              >
+                <span className="h-px w-4 bg-[color:var(--accent-red)] transition-all duration-500 group-hover:w-8" />
+                <Plus
+                  className={`h-3.5 w-3.5 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                    detailsOpen
+                      ? "rotate-45 text-[color:var(--accent-red)]"
+                      : "rotate-0 text-white/60 group-hover:text-white"
+                  }`}
+                />
                 <span
-                  aria-hidden="true"
-                  className={`mt-6 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] transition-colors duration-300 ${
-                    isOpen ? "text-[color:var(--accent-red)]" : "text-white/40 group-hover:text-white/70"
+                  className={`text-[10px] uppercase tracking-[0.25em] transition-colors duration-300 ${
+                    detailsOpen ? "text-[color:var(--accent-red)]" : "text-white/60 group-hover:text-white"
                   }`}
                 >
-                  <Plus
-                    className={`h-3.5 w-3.5 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                      isOpen ? "rotate-45" : "rotate-0"
-                    }`}
-                  />
-                  {isOpen ? "Close" : "Read more"}
+                  {detailsOpen ? "Close" : "Read more"}
                 </span>
-
-                {/* Bottom accent line */}
-                <span
-                  aria-hidden="true"
-                  className={`absolute left-0 bottom-0 h-px bg-[color:var(--accent-red)] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                    isOpen ? "w-full" : "w-0 group-hover:w-full"
-                  }`}
-                  style={{ boxShadow: "0 0 16px var(--accent-glow)" }}
-                />
               </button>
-            </li>
-          );
-        })}
-      </ol>
+            </div>
+          </div>
+
+          {/* Bottom accent line */}
+          <span
+            aria-hidden="true"
+            className="absolute left-0 bottom-0 h-px w-full bg-gradient-to-r from-[color:var(--accent-red)] via-[color:var(--accent-red)]/40 to-transparent"
+            style={{ boxShadow: "0 0 16px var(--accent-glow)" }}
+          />
+        </div>
+      </div>
     </section>
   );
 }
