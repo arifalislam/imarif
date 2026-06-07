@@ -145,14 +145,14 @@ export function Experience() {
         className="pointer-events-none absolute inset-0 opacity-[0.07]"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 20% 10%, var(--accent-red) 0, transparent 40%), radial-gradient(circle at 80% 80%, white 0, transparent 35%)",
+            "radial-gradient(circle at 20% 10%, white 0, transparent 40%), radial-gradient(circle at 80% 80%, white 0, transparent 35%)",
         }}
       />
 
       <div className="relative grid grid-cols-12 gap-6 md:gap-10 mb-16 md:mb-24">
         <div className="col-span-12 md:col-span-3">
           <p className="exp-head text-xs uppercase tracking-[0.3em] text-white/40">
-            <span className="inline-block w-8 h-px bg-[color:var(--accent-red)] align-middle mr-3" />
+            <span className="inline-block w-8 h-px bg-white/40 align-middle mr-3" />
             Experience — 03
           </p>
         </div>
@@ -193,7 +193,7 @@ export function Experience() {
                   onClick={() => setActive(i)}
                   onFocus={() => setActive(i)}
                   onKeyDown={(e) => onKeyDown(e, i)}
-                  className={`group relative w-full text-left grid grid-cols-12 gap-6 md:gap-10 py-8 md:py-10 px-4 md:px-6 border-t border-white/10 transition-all duration-500 outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-red)] focus-visible:ring-offset-2 focus-visible:ring-offset-black ${
+                  className={`group relative w-full text-left grid grid-cols-12 gap-6 md:gap-10 py-8 md:py-10 px-4 md:px-6 border-t border-white/10 transition-all duration-500 outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-black ${
                     isActive ? "" : "hover:bg-white/[0.02] hover:translate-x-1"
                   }`}
                 >
@@ -203,7 +203,7 @@ export function Experience() {
                       aria-hidden="true"
                       className={`mt-2 h-2 w-2 rounded-full transition-all duration-500 ${
                         isActive
-                          ? "bg-[color:var(--accent-red)] shadow-[0_0_0_4px_var(--accent-glow-soft)]"
+                          ? "bg-white shadow-[0_0_0_4px_rgba(255,255,255,0.15)]"
                           : "bg-white/30 group-hover:bg-white/60"
                       }`}
                     />
@@ -226,7 +226,7 @@ export function Experience() {
                     >
                       {item.role}
                     </h3>
-                    <p className="mt-2 text-[11px] md:text-xs text-[color:var(--accent-red)] uppercase tracking-[0.25em]">
+                    <p className="mt-2 text-[11px] md:text-xs text-white/70 uppercase tracking-[0.25em]">
                       {item.company} <span className="text-white/30">·</span>{" "}
                       <span className="text-white/50">{item.location}</span>
                     </p>
@@ -238,7 +238,7 @@ export function Experience() {
                       aria-hidden="true"
                       className={`h-6 w-6 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                         isActive
-                          ? "rotate-180 text-[color:var(--accent-red)] drop-shadow-[0_0_12px_var(--accent-glow)]"
+                          ? "rotate-180 text-white"
                           : "text-white/30 group-hover:text-white/70"
                       }`}
                     />
@@ -271,7 +271,7 @@ export function Experience() {
                           {item.highlights.map((h) => (
                             <li
                               key={h}
-                              className="text-[10px] uppercase tracking-[0.2em] text-white/70 border border-white/15 rounded-full px-3 py-1.5 bg-white/[0.02] transition-all duration-300 hover:text-white hover:border-[color:var(--accent-red)] hover:bg-[color:var(--accent-red)]/10 hover:-translate-y-0.5"
+                              className="text-[10px] uppercase tracking-[0.2em] text-white/70 border border-white/15 rounded-full px-3 py-1.5 bg-white/[0.02] transition-all duration-300 hover:text-white hover:border-white/40 hover:bg-white/[0.06] hover:-translate-y-0.5"
                             >
                               {h}
                             </li>
