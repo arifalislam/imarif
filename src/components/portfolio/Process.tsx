@@ -105,7 +105,6 @@ export function Process() {
     return () => ctx.revert();
   }, []);
 
-  // Crossfade animation when active step changes
   useEffect(() => {
     if (!panelRef.current) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -117,7 +116,6 @@ export function Process() {
     );
   }, [activeIndex]);
 
-  // Reset expanded details when switching steps
   useEffect(() => {
     setDetailsOpen(false);
   }, [activeIndex]);
@@ -137,25 +135,25 @@ export function Process() {
         className="pointer-events-none absolute inset-0 opacity-[0.06]"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 80% 10%, var(--accent-red) 0, transparent 40%), radial-gradient(circle at 10% 90%, white 0, transparent 35%)",
+            "radial-gradient(circle at 80% 10%, white 0, transparent 40%), radial-gradient(circle at 10% 90%, white 0, transparent 35%)",
         }}
       />
 
       <div className="relative grid grid-cols-12 gap-6 md:gap-10 mb-16 md:mb-24">
         <div className="col-span-12 md:col-span-3">
-          <p className="proc-head text-xs uppercase tracking-[0.3em] text-white/40">
-            <span className="inline-block w-8 h-px bg-[color:var(--accent-red)] align-middle mr-3" />
+          <p className="proc-head text-xs uppercase tracking-[0.3em] text-white/60 font-semibold">
+            <span className="inline-block w-8 h-px bg-white/60 align-middle mr-3" />
             Process — 04
           </p>
         </div>
         <div className="col-span-12 md:col-span-9">
           <h2
             id="process-heading"
-            className="proc-head font-display text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight font-medium text-balance"
+            className="proc-head font-display text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight font-bold text-balance"
           >
             From discovery to ship —
             <br />
-            <span className="italic text-white/50">a deliberate way of working.</span>
+            <span className="italic font-semibold text-white/60">a deliberate way of working.</span>
           </h2>
         </div>
       </div>
@@ -164,7 +162,7 @@ export function Process() {
         {/* Sticky index rail */}
         <aside className="proc-rail md:col-span-4 lg:col-span-3 border-b md:border-b-0 md:border-r border-white/10">
           <div className="md:sticky md:top-24 p-6 md:p-8">
-            <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-white/30 mb-8">
+            <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-white/50 font-bold mb-8">
               / Index
             </p>
             <nav aria-label="Process steps">
@@ -179,31 +177,28 @@ export function Process() {
                         aria-current={isActive ? "step" : undefined}
                         className={`group relative w-full text-left flex items-center gap-4 py-3 md:py-4 pr-4 transition-colors duration-500 focus:outline-none`}
                       >
-                        {/* Active red bar */}
                         <span
                           aria-hidden="true"
                           className={`hidden md:block absolute left-0 top-1/2 -translate-y-1/2 h-6 w-px transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                             isActive
-                              ? "bg-[color:var(--accent-red)] opacity-100"
+                              ? "bg-white opacity-100"
                               : "bg-white/30 opacity-0 group-hover:opacity-60"
                           }`}
-                          style={isActive ? { boxShadow: "0 0 12px var(--accent-glow)" } : undefined}
                         />
                         <span
-                          className={`pl-4 font-mono text-[11px] tracking-[0.2em] transition-colors duration-300 ${
+                          className={`pl-4 font-mono text-[11px] tracking-[0.2em] font-bold transition-colors duration-300 ${
                             isActive
-                              ? "text-[color:var(--accent-red)]"
-                              : "text-white/40 group-hover:text-white/70"
+                              ? "text-white"
+                              : "text-white/50 group-hover:text-white/80"
                           }`}
-                          style={isActive ? { textShadow: "0 0 10px var(--accent-glow)" } : undefined}
                         >
                           {s.step}
                         </span>
                         <span
-                          className={`text-[11px] uppercase tracking-[0.25em] font-medium transition-colors duration-300 ${
+                          className={`text-[11px] uppercase tracking-[0.25em] font-bold transition-colors duration-300 ${
                             isActive
                               ? "text-white"
-                              : "text-white/40 group-hover:text-white/80"
+                              : "text-white/50 group-hover:text-white/80"
                           }`}
                         >
                           {s.title}
@@ -220,47 +215,43 @@ export function Process() {
         {/* Detail panel */}
         <div className="proc-panel md:col-span-8 lg:col-span-9 relative">
           <div ref={panelRef} className="relative p-6 md:p-12 lg:p-16">
-            {/* Background big numeral */}
             <span
               aria-hidden="true"
-              className="pointer-events-none absolute -top-4 right-4 md:right-8 font-display italic text-white/[0.04] text-[10rem] md:text-[16rem] leading-none select-none"
+              className="pointer-events-none absolute -top-4 right-4 md:right-8 font-display italic font-bold text-white/[0.05] text-[10rem] md:text-[16rem] leading-none select-none"
             >
               {active.step}
             </span>
 
             <div className="relative">
               <div className="flex items-center gap-4 mb-8">
-                <div className="relative h-11 w-11 rounded-full border border-[color:var(--accent-red)]/40 bg-gradient-to-br from-white/10 to-white/[0.02] flex items-center justify-center">
-                  <ActiveIcon className="h-4 w-4 text-[color:var(--accent-red)]" />
+                <div className="relative h-11 w-11 rounded-full border border-white/30 bg-gradient-to-br from-white/10 to-white/[0.02] flex items-center justify-center">
+                  <ActiveIcon className="h-4 w-4 text-white" />
                 </div>
-                <span className="font-mono text-[10px] tracking-[0.3em] text-white/30">
+                <span className="font-mono text-[10px] tracking-[0.3em] font-bold text-white/50">
                   / {active.step}
                 </span>
               </div>
 
-              <h3 className="font-display text-3xl md:text-5xl font-medium tracking-tight text-white mb-3">
+              <h3 className="font-display text-3xl md:text-5xl font-bold tracking-tight text-white mb-3">
                 {active.title}
               </h3>
-              <p
-                className="text-[10px] md:text-[11px] text-[color:var(--accent-red)] uppercase tracking-[0.25em] mb-8"
-                style={{ textShadow: "0 0 12px var(--accent-glow)" }}
-              >
+              <p className="text-[10px] md:text-[11px] text-white/80 font-bold uppercase tracking-[0.25em] mb-8">
                 {active.subtitle}
               </p>
 
-              <p className="text-white/65 leading-relaxed text-base md:text-lg max-w-xl mb-10">
+              <p className="text-white/75 font-medium leading-relaxed text-base md:text-lg max-w-xl mb-10">
                 {active.description}
               </p>
 
               <div className="mb-8">
-                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">
+                <p className="font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-white/50 mb-4">
                   Key deliverables
                 </p>
                 <ul className="flex flex-wrap gap-2 list-none p-0">
                   {active.deliverables.map((d) => (
                     <li
                       key={d}
-                      className="text-[10px] uppercase tracking-[0.2em] text-white/70 border border-white/10 bg-white/[0.02] rounded-full px-3 py-1.5"
+                      className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/85 border border-white/15 bg-white/[0.04] rounded-full px-3 py-1.5"
                     >
                       {d}
                     </li>
@@ -268,7 +259,6 @@ export function Process() {
                 </ul>
               </div>
 
-              {/* Expandable extra detail */}
               <div
                 id={`process-panel-details-${activeIndex}`}
                 className={`grid transition-[grid-template-rows,opacity,margin] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
@@ -283,10 +273,10 @@ export function Process() {
                       detailsOpen ? "translate-y-0 opacity-100 delay-100" : "-translate-y-1 opacity-0"
                     }`}
                   >
-                    <p className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-2">
+                    <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/60 mb-2">
                       What it looks like
                     </p>
-                    <p className="text-white/70 leading-relaxed text-sm md:text-base max-w-xl">
+                    <p className="text-white/80 font-medium leading-relaxed text-sm md:text-base max-w-xl">
                       {active.details}
                     </p>
                   </div>
@@ -300,17 +290,15 @@ export function Process() {
                 aria-controls={`process-panel-details-${activeIndex}`}
                 className="mt-6 inline-flex items-center gap-2 group focus:outline-none"
               >
-                <span className="h-px w-4 bg-[color:var(--accent-red)] transition-all duration-500 group-hover:w-8" />
+                <span className="h-px w-4 bg-white/70 transition-all duration-500 group-hover:w-8" />
                 <Plus
                   className={`h-3.5 w-3.5 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                    detailsOpen
-                      ? "rotate-45 text-[color:var(--accent-red)]"
-                      : "rotate-0 text-white/60 group-hover:text-white"
+                    detailsOpen ? "rotate-45 text-white" : "rotate-0 text-white/70 group-hover:text-white"
                   }`}
                 />
                 <span
-                  className={`text-[10px] uppercase tracking-[0.25em] transition-colors duration-300 ${
-                    detailsOpen ? "text-[color:var(--accent-red)]" : "text-white/60 group-hover:text-white"
+                  className={`text-[10px] uppercase tracking-[0.25em] font-bold transition-colors duration-300 ${
+                    detailsOpen ? "text-white" : "text-white/70 group-hover:text-white"
                   }`}
                 >
                   {detailsOpen ? "Close" : "Read more"}
@@ -319,11 +307,9 @@ export function Process() {
             </div>
           </div>
 
-          {/* Bottom accent line */}
           <span
             aria-hidden="true"
-            className="absolute left-0 bottom-0 h-px w-full bg-gradient-to-r from-[color:var(--accent-red)] via-[color:var(--accent-red)]/40 to-transparent"
-            style={{ boxShadow: "0 0 16px var(--accent-glow)" }}
+            className="absolute left-0 bottom-0 h-px w-full bg-gradient-to-r from-white/40 via-white/15 to-transparent"
           />
         </div>
       </div>
