@@ -145,7 +145,7 @@ export function Experience() {
         className="pointer-events-none absolute inset-0 opacity-[0.07]"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 20% 10%, var(--accent-red) 0, transparent 40%), radial-gradient(circle at 80% 80%, white 0, transparent 35%)",
+            "radial-gradient(circle at 20% 10%, white 0, transparent 40%), radial-gradient(circle at 80% 80%, white 0, transparent 35%)",
         }}
       />
 
