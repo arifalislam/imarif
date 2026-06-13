@@ -158,11 +158,11 @@ export function Process() {
         </div>
       </div>
 
-      <div className="proc-shell relative grid grid-cols-1 md:grid-cols-12 border-t border-white/10">
+      <div className="proc-shell relative grid grid-cols-1 md:grid-cols-12 border-y border-white/10">
         {/* Sticky index rail */}
         <aside className="proc-rail md:col-span-4 lg:col-span-3 border-b md:border-b-0 md:border-r border-white/10">
-          <div className="md:sticky md:top-24 p-6 md:p-8">
-            <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-white/50 font-bold mb-8">
+          <div className="md:sticky md:top-24 p-8 md:p-10">
+            <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/50 font-bold mb-10">
               / Index
             </p>
             <nav aria-label="Process steps">
@@ -175,7 +175,7 @@ export function Process() {
                         type="button"
                         onClick={() => setActiveIndex(i)}
                         aria-current={isActive ? "step" : undefined}
-                        className={`group relative w-full text-left flex items-center gap-4 py-3 md:py-4 pr-4 transition-colors duration-500 focus:outline-none`}
+                        className="group relative w-full text-left flex items-center gap-4 py-4 pr-4 transition-colors duration-500 focus:outline-none"
                       >
                         <span
                           aria-hidden="true"
@@ -186,19 +186,15 @@ export function Process() {
                           }`}
                         />
                         <span
-                          className={`pl-4 font-mono text-[11px] tracking-[0.2em] font-bold transition-colors duration-300 ${
-                            isActive
-                              ? "text-white"
-                              : "text-white/50 group-hover:text-white/80"
+                          className={`pl-4 font-mono text-[10px] tracking-[0.3em] font-bold transition-colors duration-300 ${
+                            isActive ? "text-white" : "text-white/50 group-hover:text-white/80"
                           }`}
                         >
                           {s.step}
                         </span>
                         <span
-                          className={`text-[11px] uppercase tracking-[0.25em] font-bold transition-colors duration-300 ${
-                            isActive
-                              ? "text-white"
-                              : "text-white/50 group-hover:text-white/80"
+                          className={`text-[10px] uppercase tracking-[0.3em] font-bold transition-colors duration-300 ${
+                            isActive ? "text-white" : "text-white/50 group-hover:text-white/80"
                           }`}
                         >
                           {s.title}
@@ -208,22 +204,21 @@ export function Process() {
                   );
                 })}
               </ul>
-            </nav>
           </div>
         </aside>
 
         {/* Detail panel */}
         <div className="proc-panel md:col-span-8 lg:col-span-9 relative">
-          <div ref={panelRef} className="relative p-6 md:p-12 lg:p-16">
+          <div ref={panelRef} className="relative p-8 md:p-10 lg:p-14">
             <span
               aria-hidden="true"
-              className="pointer-events-none absolute -top-4 right-4 md:right-8 font-display italic font-bold text-white/[0.05] text-[10rem] md:text-[16rem] leading-none select-none"
+              className="pointer-events-none absolute top-6 right-8 md:right-10 font-display italic font-bold text-white/[0.05] text-[8rem] md:text-[12rem] leading-none select-none"
             >
               {active.step}
             </span>
 
             <div className="relative">
-              <div className="flex items-center gap-4 mb-8">
+              <div className="flex items-center gap-4 mb-10">
                 <div className="relative h-11 w-11 rounded-full border border-white/30 bg-gradient-to-br from-white/10 to-white/[0.02] flex items-center justify-center">
                   <ActiveIcon className="h-4 w-4 text-white" />
                 </div>
@@ -232,10 +227,10 @@ export function Process() {
                 </span>
               </div>
 
-              <h3 className="font-display text-3xl md:text-5xl font-bold tracking-tight text-white mb-3">
+              <h3 className="font-display text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">
                 {active.title}
               </h3>
-              <p className="text-[10px] md:text-[11px] text-white/80 font-bold uppercase tracking-[0.25em] mb-8">
+              <p className="font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-white/80 mb-8">
                 {active.subtitle}
               </p>
 
@@ -243,15 +238,15 @@ export function Process() {
                 {active.description}
               </p>
 
-              <div className="mb-8">
+              <div>
                 <p className="font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-white/50 mb-4">
-                  Key deliverables
+                  / Key deliverables
                 </p>
                 <ul className="flex flex-wrap gap-2 list-none p-0">
                   {active.deliverables.map((d) => (
                     <li
                       key={d}
-                      className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/85 border border-white/15 bg-white/[0.04] rounded-full px-3 py-1.5"
+                      className="font-mono text-[10px] uppercase tracking-[0.2em] font-bold text-white/85 border border-white/15 bg-white/[0.04] rounded-full px-3 py-1.5"
                     >
                       {d}
                     </li>
@@ -263,18 +258,18 @@ export function Process() {
                 id={`process-panel-details-${activeIndex}`}
                 className={`grid transition-[grid-template-rows,opacity,margin] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                   detailsOpen
-                    ? "grid-rows-[1fr] opacity-100 mt-2"
+                    ? "grid-rows-[1fr] opacity-100 mt-8"
                     : "grid-rows-[0fr] opacity-0 mt-0"
                 }`}
               >
                 <div className="overflow-hidden">
                   <div
-                    className={`pt-6 border-t border-white/10 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                    className={`pt-8 border-t border-white/10 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                       detailsOpen ? "translate-y-0 opacity-100 delay-100" : "-translate-y-1 opacity-0"
                     }`}
                   >
-                    <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/60 mb-2">
-                      What it looks like
+                    <p className="font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-white/60 mb-3">
+                      / What it looks like
                     </p>
                     <p className="text-white/80 font-medium leading-relaxed text-sm md:text-base max-w-xl">
                       {active.details}
