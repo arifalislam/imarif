@@ -204,6 +204,7 @@ export function Process() {
                   );
                 })}
               </ul>
+            </nav>
           </div>
         </aside>
 
