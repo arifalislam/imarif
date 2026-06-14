@@ -153,7 +153,7 @@ export function Process() {
           >
             From discovery to ship —
             <br />
-            <span className="italic font-semibold text-white/60">a deliberate way of working.</span>
+            <span className="font-semibold text-white/60">a deliberate way of working.</span>
           </h2>
         </div>
       </div>
@@ -213,7 +213,7 @@ export function Process() {
           <div ref={panelRef} className="relative p-8 md:p-10 lg:p-14">
             <span
               aria-hidden="true"
-              className="pointer-events-none absolute top-6 right-8 md:right-10 font-display italic font-bold text-white/[0.05] text-[8rem] md:text-[12rem] leading-none select-none"
+              className="pointer-events-none absolute top-6 right-8 md:right-10 font-display font-bold text-white/[0.05] text-[8rem] md:text-[12rem] leading-none select-none"
             >
               {active.step}
             </span>
