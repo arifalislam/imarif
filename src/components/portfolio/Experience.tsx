@@ -163,7 +163,7 @@ export function Experience() {
           >
             A decade of designing
             <br />
-            <span className="italic text-white/50">products that matter.</span>
+            <span className="text-white/50">products that matter.</span>
           </h2>
         </div>
       </div>

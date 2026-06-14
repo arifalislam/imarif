@@ -33,7 +33,7 @@ export function Footer() {
         </h2>
       </div>
       <div className="overflow-hidden">
-        <h2 className="ft-line font-display text-[14vw] md:text-[11vw] leading-[0.9] font-bold tracking-tight italic font-light">
+        <h2 className="ft-line font-display text-[14vw] md:text-[11vw] leading-[0.9] font-light tracking-tight">
           something real.
         </h2>
       </div>
