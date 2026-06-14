@@ -122,6 +122,8 @@ export function Process() {
 
   const active = steps[activeIndex];
   const ActiveIcon = active.icon;
+  const nextIndex = (activeIndex + 1) % steps.length;
+  const next = steps[nextIndex];
 
   return (
     <section
@@ -139,174 +141,197 @@ export function Process() {
         }}
       />
 
-      <div className="relative grid grid-cols-12 gap-6 md:gap-10 mb-16 md:mb-24">
-        <div className="col-span-12 md:col-span-3">
-          <p className="proc-head text-xs uppercase tracking-[0.3em] text-white/60 font-semibold">
-            <span className="inline-block w-8 h-px bg-white/60 align-middle mr-3" />
-            Process — 04
-          </p>
-        </div>
-        <div className="col-span-12 md:col-span-9">
-          <h2
-            id="process-heading"
-            className="proc-head font-display text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight font-bold text-balance"
-          >
-            From discovery to ship —
-            <br />
-            <span className="font-semibold text-white/60">a deliberate way of working.</span>
-          </h2>
-        </div>
-      </div>
-
-      <div className="proc-shell relative grid grid-cols-1 md:grid-cols-12 border-y border-white/10">
-        {/* Sticky index rail */}
-        <aside className="proc-rail md:col-span-4 lg:col-span-3 border-b md:border-b-0 md:border-r border-white/10">
-          <div className="md:sticky md:top-24 p-8 md:p-10">
-            <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/50 font-bold mb-10">
-              / Index
+      <div className="proc-shell relative grid grid-cols-12 gap-0 border-l border-white/10">
+        {/* Left: sticky context column */}
+        <aside className="proc-rail col-span-12 lg:col-span-5 flex flex-col justify-between gap-16 py-12 px-6 md:px-10 lg:sticky lg:top-24 lg:h-[80vh]">
+          <div className="space-y-10">
+            <p className="proc-head flex items-center gap-4 text-xs uppercase tracking-[0.3em] text-white/60 font-semibold">
+              <span className="inline-block h-px w-8 bg-white/70" />
+              Process — 04
             </p>
-            <nav aria-label="Process steps">
-              <ul className="relative list-none p-0 m-0 flex flex-row md:flex-col gap-1 overflow-x-auto md:overflow-visible">
-                {steps.map((s, i) => {
-                  const isActive = activeIndex === i;
-                  return (
-                    <li key={s.step} className="shrink-0 md:shrink">
-                      <button
-                        type="button"
-                        onClick={() => setActiveIndex(i)}
-                        aria-current={isActive ? "step" : undefined}
-                        className="group relative w-full text-left flex items-center gap-4 py-4 pr-4 transition-colors duration-500 focus:outline-none"
-                      >
-                        <span
-                          aria-hidden="true"
-                          className={`hidden md:block absolute left-0 top-1/2 -translate-y-1/2 h-6 w-px transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                            isActive
-                              ? "bg-white opacity-100"
-                              : "bg-white/30 opacity-0 group-hover:opacity-60"
-                          }`}
-                        />
-                        <span
-                          className={`pl-4 font-mono text-[10px] tracking-[0.3em] font-bold transition-colors duration-300 ${
-                            isActive ? "text-white" : "text-white/50 group-hover:text-white/80"
-                          }`}
-                        >
-                          {s.step}
-                        </span>
-                        <span
-                          className={`text-[10px] uppercase tracking-[0.3em] font-bold transition-colors duration-300 ${
-                            isActive ? "text-white" : "text-white/50 group-hover:text-white/80"
-                          }`}
-                        >
-                          {s.title}
-                        </span>
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-            </nav>
+            <h2
+              id="process-heading"
+              className="proc-head font-display text-4xl md:text-5xl lg:text-6xl leading-[0.95] tracking-tight font-bold text-balance"
+            >
+              From discovery to ship —
+              <br />
+              <span className="font-light text-white/40">
+                a deliberate way of working.
+              </span>
+            </h2>
           </div>
+
+          <nav aria-label="Process steps" className="hidden lg:block">
+            <ul className="flex flex-col gap-6 list-none p-0 m-0">
+              {steps.map((s, i) => {
+                const isActive = activeIndex === i;
+                return (
+                  <li key={s.step}>
+                    <button
+                      type="button"
+                      onClick={() => setActiveIndex(i)}
+                      aria-current={isActive ? "step" : undefined}
+                      className={`group flex items-end gap-4 transition-opacity duration-300 focus:outline-none ${
+                        isActive ? "opacity-100" : "opacity-30 hover:opacity-100"
+                      }`}
+                    >
+                      <span className="font-display text-3xl font-black text-white leading-none tracking-tight">
+                        {s.step}
+                      </span>
+                      <span
+                        className={`text-[10px] uppercase tracking-[0.3em] font-bold pb-1 border-b transition-colors duration-300 ${
+                          isActive ? "border-white text-white" : "border-transparent text-white/80"
+                        }`}
+                      >
+                        {s.title}
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+
+          {/* Mobile/tablet horizontal step nav */}
+          <nav aria-label="Process steps" className="lg:hidden -mx-6 md:-mx-10 px-6 md:px-10">
+            <ul className="flex gap-4 list-none p-0 m-0 overflow-x-auto pb-2">
+              {steps.map((s, i) => {
+                const isActive = activeIndex === i;
+                return (
+                  <li key={s.step} className="shrink-0">
+                    <button
+                      type="button"
+                      onClick={() => setActiveIndex(i)}
+                      aria-current={isActive ? "step" : undefined}
+                      className={`flex items-end gap-2 py-2 transition-opacity duration-300 ${
+                        isActive ? "opacity-100" : "opacity-40"
+                      }`}
+                    >
+                      <span className="font-display text-2xl font-black leading-none tracking-tight">
+                        {s.step}
+                      </span>
+                      <span
+                        className={`text-[10px] uppercase tracking-[0.3em] font-bold pb-1 border-b ${
+                          isActive ? "border-white text-white" : "border-transparent text-white/70"
+                        }`}
+                      >
+                        {s.title}
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
         </aside>
 
-        {/* Detail panel */}
-        <div className="proc-panel md:col-span-8 lg:col-span-9 relative">
-          <div ref={panelRef} className="relative p-8 md:p-10 lg:p-14">
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute top-6 right-8 md:right-10 font-display font-bold text-white/[0.05] text-[8rem] md:text-[12rem] leading-none select-none"
-            >
-              {active.step}
-            </span>
+        {/* Right: detail panel */}
+        <div className="proc-panel col-span-12 lg:col-span-7 border-l border-white/10 relative overflow-hidden">
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute -top-12 -right-8 md:-right-12 font-display font-black text-white/[0.04] leading-none select-none text-[14rem] md:text-[20rem] lg:text-[22rem] tracking-tighter"
+          >
+            {active.step}
+          </span>
 
-            <div className="relative">
-              <div className="flex items-center gap-4 mb-10">
-                <div className="relative h-11 w-11 rounded-full border border-white/30 bg-gradient-to-br from-white/10 to-white/[0.02] flex items-center justify-center">
-                  <ActiveIcon className="h-4 w-4 text-white" />
-                </div>
-                <span className="font-mono text-[10px] tracking-[0.3em] font-bold text-white/50">
-                  / {active.step}
+          <div ref={panelRef} className="relative z-10 p-8 md:p-16 lg:p-20 flex flex-col min-h-[70vh]">
+            <header className="mb-12">
+              <div className="inline-flex items-center gap-3 py-2 px-4 border border-white/20 rounded-full mb-8">
+                <span className="h-2 w-2 rounded-full bg-white" />
+                <ActiveIcon className="h-3.5 w-3.5 text-white" />
+                <span className="font-mono text-[10px] uppercase tracking-[0.25em] font-bold text-white">
+                  Phase {active.step} / {active.title}
                 </span>
               </div>
-
-              <h3 className="font-display text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">
+              <h3 className="font-display text-5xl md:text-6xl lg:text-7xl font-black tracking-tight uppercase text-white mb-6">
                 {active.title}
               </h3>
-              <p className="font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-white/80 mb-8">
+              <p className="font-mono text-[11px] md:text-xs tracking-[0.3em] font-bold text-white/60 uppercase">
                 {active.subtitle}
               </p>
+            </header>
 
-              <p className="text-white/75 font-medium leading-relaxed text-base md:text-lg max-w-xl mb-10">
-                {active.description}
-              </p>
-
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 mt-auto">
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-white/50 mb-4">
-                  / Key deliverables
+                <p className="text-lg md:text-xl font-light leading-relaxed text-white/80">
+                  {active.description}
                 </p>
-                <ul className="flex flex-wrap gap-2 list-none p-0">
+
+                <div
+                  id={`process-panel-details-${activeIndex}`}
+                  className={`grid transition-[grid-template-rows,opacity,margin] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                    detailsOpen
+                      ? "grid-rows-[1fr] opacity-100 mt-8"
+                      : "grid-rows-[0fr] opacity-0 mt-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="pt-6 border-t border-white/10">
+                      <p className="font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-white/60 mb-3">
+                        / What it looks like
+                      </p>
+                      <p className="text-white/75 font-light leading-relaxed text-sm md:text-base">
+                        {active.details}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setDetailsOpen((o) => !o)}
+                  aria-expanded={detailsOpen}
+                  aria-controls={`process-panel-details-${activeIndex}`}
+                  className="mt-6 inline-flex items-center gap-2 group focus:outline-none"
+                >
+                  <span className="h-px w-4 bg-white/70 transition-all duration-500 group-hover:w-8" />
+                  <Plus
+                    className={`h-3.5 w-3.5 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                      detailsOpen ? "rotate-45 text-white" : "rotate-0 text-white/70 group-hover:text-white"
+                    }`}
+                  />
+                  <span
+                    className={`text-[10px] uppercase tracking-[0.25em] font-bold transition-colors duration-300 ${
+                      detailsOpen ? "text-white" : "text-white/70 group-hover:text-white"
+                    }`}
+                  >
+                    {detailsOpen ? "Close" : "Read more"}
+                  </span>
+                </button>
+              </div>
+
+              <div className="flex flex-col justify-end">
+                <ul className="space-y-4 border-t border-white/10 pt-8 list-none p-0 m-0">
                   {active.deliverables.map((d) => (
                     <li
                       key={d}
-                      className="font-mono text-[10px] uppercase tracking-[0.2em] font-bold text-white/85 border border-white/15 bg-white/[0.04] rounded-full px-3 py-1.5"
+                      className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.25em] font-bold text-white/70"
                     >
+                      <span className="h-1 w-1 bg-white rounded-full" />
                       {d}
                     </li>
                   ))}
                 </ul>
               </div>
+            </div>
 
-              <div
-                id={`process-panel-details-${activeIndex}`}
-                className={`grid transition-[grid-template-rows,opacity,margin] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                  detailsOpen
-                    ? "grid-rows-[1fr] opacity-100 mt-8"
-                    : "grid-rows-[0fr] opacity-0 mt-0"
-                }`}
-              >
-                <div className="overflow-hidden">
-                  <div
-                    className={`pt-8 border-t border-white/10 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                      detailsOpen ? "translate-y-0 opacity-100 delay-100" : "-translate-y-1 opacity-0"
-                    }`}
-                  >
-                    <p className="font-mono text-[10px] uppercase tracking-[0.3em] font-bold text-white/60 mb-3">
-                      / What it looks like
-                    </p>
-                    <p className="text-white/80 font-medium leading-relaxed text-sm md:text-base max-w-xl">
-                      {active.details}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
+            {/* Next step navigator */}
+            <div className="mt-16 md:mt-20 pt-8 border-t border-white/10">
               <button
                 type="button"
-                onClick={() => setDetailsOpen((o) => !o)}
-                aria-expanded={detailsOpen}
-                aria-controls={`process-panel-details-${activeIndex}`}
-                className="mt-6 inline-flex items-center gap-2 group focus:outline-none"
+                onClick={() => setActiveIndex(nextIndex)}
+                className="flex items-center gap-4 group focus:outline-none"
               >
-                <span className="h-px w-4 bg-white/70 transition-all duration-500 group-hover:w-8" />
-                <Plus
-                  className={`h-3.5 w-3.5 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                    detailsOpen ? "rotate-45 text-white" : "rotate-0 text-white/70 group-hover:text-white"
-                  }`}
-                />
-                <span
-                  className={`text-[10px] uppercase tracking-[0.25em] font-bold transition-colors duration-300 ${
-                    detailsOpen ? "text-white" : "text-white/70 group-hover:text-white"
-                  }`}
-                >
-                  {detailsOpen ? "Close" : "Read more"}
+                <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/40 group-hover:text-white transition-colors duration-300">
+                  Next step
+                </span>
+                <span className="h-px w-12 bg-white/20 group-hover:w-24 group-hover:bg-white transition-all duration-500" />
+                <span className="font-display text-sm font-black tracking-tight text-white">
+                  {next.step} · {next.title}
                 </span>
               </button>
             </div>
           </div>
-
-          <span
-            aria-hidden="true"
-            className="absolute left-0 bottom-0 h-px w-full bg-gradient-to-r from-white/40 via-white/15 to-transparent"
-          />
         </div>
       </div>
     </section>
