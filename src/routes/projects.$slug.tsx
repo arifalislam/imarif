@@ -36,12 +36,13 @@ export const Route = createFileRoute("/projects/$slug")({
     return project;
   },
   errorComponent: ({ error, reset }) => {
+    console.error(error);
     const router = useRouter();
     return (
       <div className="min-h-screen bg-black text-white flex items-center justify-center px-6 text-center">
         <div>
           <h1 className="font-display text-3xl mb-3">Something went wrong</h1>
-          <p className="text-white/60 mb-6">{error.message}</p>
+          <p className="text-white/60 mb-6">An unexpected error occurred loading this project.</p>
           <button
             onClick={() => {
               router.invalidate();
