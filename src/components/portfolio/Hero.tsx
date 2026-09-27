@@ -43,7 +43,7 @@ export function Hero() {
   return (
     <section
       ref={root}
-      className="relative min-h-[82svh] md:min-h-[86svh] overflow-hidden flex flex-col justify-end pb-8 md:pb-10 px-6 md:px-10"
+      className="relative min-h-[72svh] md:min-h-[76svh] overflow-hidden flex flex-col justify-end pb-8 md:pb-10 px-6 md:px-10"
     >
       <img
         src={heroImg}
