@@ -18,15 +18,22 @@ gsap.registerPlugin(ScrollTrigger);
 export const Route = createFileRoute("/projects/$slug")({
   head: ({ params }) => {
     const project = getProjectBySlug(params.slug);
-    if (!project) return { meta: [{ title: "Project not found" }] };
+    if (!project) return { meta: [
+      { title: "Project not found — A R I F" },
+      { name: "description", content: "This project is not available in A R I F’s portfolio." },
+      { property: "og:title", content: "Project not found — A R I F" },
+      { property: "og:description", content: "This project is not available in A R I F’s portfolio." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ] };
     return {
       meta: [
         { title: `${project.title} — Case Study` },
         { name: "description", content: project.meta },
         { property: "og:title", content: `${project.title} — Case Study` },
         { property: "og:description", content: project.meta },
-        { property: "og:image", content: project.image },
-        { name: "twitter:image", content: project.image },
+        { property: "og:type", content: "article" },
+        { name: "twitter:card", content: "summary_large_image" },
       ],
     };
   },

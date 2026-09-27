@@ -108,11 +108,11 @@ export function ProjectBlock({
   }, []);
 
   return (
-    <section ref={root} className="relative py-20 md:py-32 border-t border-white/10">
+    <section ref={root} className="relative py-16 md:py-24 first:pt-8 md:first:pt-10 border-t border-white/10">
       <div
         className={`grid grid-cols-12 gap-6 md:gap-10 px-6 md:px-10 ${reverse ? "md:[direction:rtl]" : ""}`}
       >
-        <div className="col-span-12 md:col-span-6 md:[direction:ltr] relative">
+        <div className="col-span-12 md:col-span-6 md:[direction:ltr] relative order-2 md:order-none">
           <div className="overflow-hidden">
             <div className="pb-num font-display font-bold leading-none text-[28vw] md:text-[18vw] text-white/95">
               {index}
@@ -145,7 +145,7 @@ export function ProjectBlock({
           </div>
         </div>
 
-        <div className="col-span-12 md:col-span-6 md:[direction:ltr] relative">
+        <div className="col-span-12 md:col-span-6 md:[direction:ltr] relative order-1 md:order-none">
           <Link
             to="/projects/$slug"
             params={{ slug }}

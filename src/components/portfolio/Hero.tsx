@@ -43,7 +43,7 @@ export function Hero() {
   return (
     <section
       ref={root}
-      className="relative min-h-screen overflow-hidden flex flex-col justify-end pb-16 px-6 md:px-10"
+      className="relative min-h-[72svh] md:min-h-[76svh] overflow-hidden flex flex-col justify-end pb-8 md:pb-10 px-6 md:px-10"
     >
       <img
         src={heroImg}
@@ -74,10 +74,10 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="hero-rule mt-10 h-px bg-white/20 w-full" />
+      <div className="hero-rule mt-6 h-px bg-white/20 w-full" />
       <div className="relative flex justify-between items-center mt-6 text-[10px] uppercase tracking-[0.3em] text-white/50">
         <span className="hero-meta">Portfolio / 2026</span>
-        <span className="hero-meta hidden md:block">Scroll to explore ↓</span>
+        <span className="hero-meta hidden md:block">Selected work ↓</span>
         <span className="hero-meta">© A R I F</span>
       </div>
     </section>

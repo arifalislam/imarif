@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/portfolio/Nav";
 import { Hero } from "@/components/portfolio/Hero";
-import { Marquee } from "@/components/portfolio/Marquee";
 import { ProjectBlock } from "@/components/portfolio/ProjectBlock";
 import { About } from "@/components/portfolio/About";
 import { Experience } from "@/components/portfolio/Experience";
@@ -19,8 +18,10 @@ export const Route = createFileRoute("/")({
         content:
           "Selected work in digital and product design — concepts, form studies and prototypes by A R I F.",
       },
-      { property: "og:title", content: "Kushagra — Industrial Designer Portfolio" },
-      { property: "og:description", content: "Selected work in industrial and product design." },
+      { property: "og:title", content: "A R I F — Digital Product Designer" },
+      { property: "og:description", content: "Selected digital product design work and case studies by A R I F." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,
@@ -33,8 +34,6 @@ function Index() {
     <main className="noise bg-black text-white selection:bg-white selection:text-black">
       <Nav />
       <Hero />
-      <Marquee />
-      <About />
       <section id="work">
         {projects.map((p, i) => (
           <ProjectBlock
@@ -51,6 +50,7 @@ function Index() {
           />
         ))}
       </section>
+      <About />
       <Experience />
       <Process />
       <Footer />

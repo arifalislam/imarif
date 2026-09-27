@@ -6,11 +6,11 @@ export function Nav() {
           A R I F <span className="text-[color:var(--accent-red)]">.</span>
         </a>
         <nav className="hidden md:flex gap-10 text-xs uppercase tracking-[0.2em] font-medium">
-          <a href="#about" className="hover:opacity-60 transition">
-            About
-          </a>
           <a href="#work" className="hover:opacity-60 transition">
             Work
+          </a>
+          <a href="#about" className="hover:opacity-60 transition">
+            About
           </a>
           <a href="#contact" className="hover:opacity-60 transition">
             Contact
