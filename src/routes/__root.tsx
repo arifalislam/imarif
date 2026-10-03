@@ -133,7 +133,7 @@ const THEME_INIT_SCRIPT = `(function(){try{if(localStorage.getItem("arif-theme")
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <HeadContent />
