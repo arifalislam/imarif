@@ -250,3 +250,69 @@
   z-index: 100;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence baseFrequency='0.9' /></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 }
+
+/* ===== Light theme (toggled via html.light) ===== */
+html.light {
+  --hairline: rgb(23 23 26 / 18%);
+}
+html.light,
+html.light body {
+  background-color: rgb(244 244 241);
+  color: rgb(23 23 26);
+}
+
+.light .text-white { color: rgb(23 23 26); }
+.light .text-white\/95 { color: rgb(23 23 26 / 0.95); }
+.light .text-white\/85 { color: rgb(23 23 26 / 0.85); }
+.light .text-white\/80 { color: rgb(23 23 26 / 0.8); }
+.light .text-white\/75 { color: rgb(23 23 26 / 0.75); }
+.light .text-white\/70 { color: rgb(23 23 26 / 0.7); }
+.light .text-white\/65 { color: rgb(23 23 26 / 0.65); }
+.light .text-white\/60 { color: rgb(23 23 26 / 0.6); }
+.light .text-white\/50 { color: rgb(23 23 26 / 0.5); }
+.light .text-white\/40 { color: rgb(23 23 26 / 0.4); }
+.light .text-white\/30 { color: rgb(23 23 26 / 0.3); }
+
+.light .bg-black { background-color: rgb(244 244 241); }
+.light .bg-white { background-color: rgb(23 23 26); }
+.light .bg-white\/5 { background-color: rgb(23 23 26 / 0.05); }
+.light .bg-white\/10 { background-color: rgb(23 23 26 / 0.1); }
+.light .bg-white\/15 { background-color: rgb(23 23 26 / 0.15); }
+.light .bg-white\/20 { background-color: rgb(23 23 26 / 0.2); }
+.light .bg-white\/30 { background-color: rgb(23 23 26 / 0.3); }
+.light .bg-white\/40 { background-color: rgb(23 23 26 / 0.4); }
+.light .bg-white\/60 { background-color: rgb(23 23 26 / 0.6); }
+.light .bg-white\/70 { background-color: rgb(23 23 26 / 0.7); }
+
+.light .border-white { border-color: rgb(23 23 26); }
+.light .border-white\/90 { border-color: rgb(23 23 26 / 0.9); }
+.light .border-white\/40 { border-color: rgb(23 23 26 / 0.4); }
+.light .border-white\/30 { border-color: rgb(23 23 26 / 0.3); }
+.light .border-white\/20 { border-color: rgb(23 23 26 / 0.2); }
+.light .border-white\/15 { border-color: rgb(23 23 26 / 0.15); }
+.light .border-white\/10 { border-color: rgb(23 23 26 / 0.1); }
+
+.light .hover\:bg-white:hover { background-color: rgb(23 23 26); }
+.light .hover\:text-black:hover { color: rgb(244 244 241); }
+.light .selection\:bg-white::selection { background-color: rgb(23 23 26); }
+.light .selection\:text-black::selection { color: rgb(244 244 241); }
+.light .dot-grid {
+  background-image: radial-gradient(rgb(23 23 26 / 0.12) 1px, transparent 1px);
+}
+
+/* The nav uses mix-blend-difference, so it keeps its white ink and
+   self-inverts over the light background. */
+.light .theme-blend { color: rgb(255 255 255); }
+.light .theme-blend .border-white\/40 { border-color: rgb(255 255 255 / 0.4); }
+.light .theme-blend .hover\:bg-white:hover { background-color: rgb(255 255 255); }
+.light .theme-blend .hover\:text-black:hover { color: rgb(0 0 0); }
+
+/* Layers that sit on imagery keep the dark treatment */
+.light .img-layer,
+.light .img-layer * {
+  color: rgb(255 255 255);
+  border-color: rgb(255 255 255 / 0.9);
+}
+.light .img-layer .hover\:bg-white:hover { background-color: rgb(255 255 255); }
+.light .img-layer .hover\:text-black:hover { color: rgb(0 0 0); }
+.light .img-layer .hero-rule { background-color: rgb(255 255 255 / 0.2); }
