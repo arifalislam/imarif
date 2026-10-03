@@ -149,7 +149,7 @@ export function ProjectBlock({
           <Link
             to="/projects/$slug"
             params={{ slug }}
-            className="group relative overflow-hidden bg-black w-full block cursor-pointer"
+            className="img-layer group relative overflow-hidden bg-black w-full block cursor-pointer"
           >
             <img
               ref={imgRef}

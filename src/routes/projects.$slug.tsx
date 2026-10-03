@@ -189,7 +189,7 @@ function ProjectCaseStudy() {
           </p>
         </header>
 
-        <div className="relative h-[70vh] md:h-[85vh] overflow-hidden">
+        <div className="img-layer relative h-[70vh] md:h-[85vh] overflow-hidden">
           <img
             ref={heroImg}
             src={project.image}
