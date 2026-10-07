@@ -123,7 +123,8 @@ export function ProjectBlock({
             {title}
           </h2>
           <p
-            className="pb-text text-white/65 leading-relaxed text-justify my-6"
+            className="pb-text min-w-0 text-white/65 leading-relaxed text-left md:text-justify my-6"
+
             dangerouslySetInnerHTML={{ __html: description }}
           />
           <p className="pb-text text-xs uppercase tracking-[0.25em] text-white/40 mb-10">{meta}</p>
