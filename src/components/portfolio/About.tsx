@@ -41,7 +41,8 @@ export function About() {
         </div>
         <div className="col-span-12 md:col-span-9">
           <h2 className="about-copy font-display text-2xl md:text-4xl leading-[1.2] font-medium text-balance">
-            I’m a digital product designer drawn to the details where form, function and feeling meet.
+            I design digital products where form, function and feeling meet.
+
           </h2>
         </div>
       </div>

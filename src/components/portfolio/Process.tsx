@@ -17,9 +17,9 @@ const steps: Step[] = [
     title: "Discovery",
     subtitle: "Listen, research, frame the problem.",
     description:
-      "Stakeholder interviews, market scans and user research to understand the why before the what. We surface the real problem worth solving.",
+      "Interviews, market scans and user research to surface the real problem worth solving.",
     details:
-      "Expect workshops, competitive teardowns and a written problem statement everyone signs off on before a single pixel is drawn.",
+      "Workshops, competitive teardowns and a written problem statement everyone signs off on before a single pixel is drawn.",
     deliverables: ["Research synthesis", "User interviews", "Problem framing"],
   },
   {
@@ -27,9 +27,9 @@ const steps: Step[] = [
     title: "Strategy",
     subtitle: "Shape the bet, align on direction.",
     description:
-      "Product principles, information architecture and a north-star vision. We commit to one sharp narrative everyone can build against.",
+      "Product principles, structure and one sharp vision everyone can build against.",
     details:
-      "We translate research into a focused roadmap — what to build first, what to cut, and the success metrics that prove it works.",
+      "Research becomes a focused roadmap — what to build first, what to cut, and how success is measured.",
     deliverables: ["Product principles", "IA & flows", "North-star vision"],
   },
   {
@@ -37,7 +37,7 @@ const steps: Step[] = [
     title: "Design & Build",
     subtitle: "Craft pixels, motion and code.",
     description:
-      "High-fidelity design systems, prototypes and production-ready interfaces — designed in tight loops with engineering.",
+      "High-fidelity design systems, prototypes and production-ready interfaces.",
     details:
       "Weekly demos, shared Figma + repo, and a design system that ships with the product instead of living as a separate artifact.",
     deliverables: ["Design system", "Prototypes", "Production UI"],
@@ -47,9 +47,9 @@ const steps: Step[] = [
     title: "Ship & Evolve",
     subtitle: "Launch, learn, iterate.",
     description:
-      "Release, measure and iterate. Design isn't done at handoff — we tune the experience based on what users actually do.",
+      "Release, measure and iterate — design doesn't end at handoff.",
     details:
-      "Post-launch we instrument the product, review analytics together, and run focused iteration sprints against the metrics that matter.",
+      "Post-launch we instrument the product, review analytics together, and iterate against the metrics that matter.",
     deliverables: ["QA & launch", "Analytics review", "Iteration loops"],
   },
 ];

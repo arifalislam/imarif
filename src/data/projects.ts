@@ -37,8 +37,8 @@ export const projects: ProjectData[] = [
     index: "01",
     title: "BEAVER - Social Co-Pilot",
     description:
-      "This project explores a modern SaaS landing page experience for an AI-powered social media assistant platform called BEAVER. The goal was to create a visually immersive, conversion-focused interface that communicates intelligence, automation, and real-time engagement while maintaining clarity and usability.",
-    meta: "Interview Project · Problem Framing, UX Research, Jouerney Mapping,",
+      "A modern, conversion-focused landing experience for an AI-powered social media co-pilot — immersive visuals, clear message.",
+    meta: "Interview Project · Research, UX, Journey Mapping",
     image: p1,
     year: "2026",
     client: "Chromatics — AI",
@@ -91,8 +91,8 @@ export const projects: ProjectData[] = [
     index: "02",
     title: "JMI ERP - Enterprise software",
     description:
-      "JMI ERP collects, stores, manages, and interprets data from your core business activities within no time to give you all of this information in real-time! This error-free ERP system keeps all your actions organized and efficient. It is a one-stop solution for all your business needs, from inventory management to customer relationship management, financial accounting, and human resources management.",
-    meta: "Large Scale  Project - Understanding Business, I/A , Wireframing, Prototyping, Development Handoff",
+      "A unified ERP covering inventory, finance, CRM and HR — one real-time, error-free source of truth for the whole business.",
+    meta: "Large-scale Project · Business Analysis, IA, Wireframing, Handoff",
     image: p2,
     year: "2024",
     client: "Self-initiated",
@@ -143,7 +143,7 @@ export const projects: ProjectData[] = [
     index: "03",
     title: "Study Planner - Product Breakdown & Form Ideation",
     description:
-      "This dashboard has a sleek, high-end <strong>Light and Dark Mode</strong> aesthetic that fits the modern EdTech space well. However, there are some significant functional contradictions and UX hurdles that need to be addressed to make it truly user-friendly.",
+      "A sleek <strong>light and dark mode</strong> EdTech dashboard, reworked into a focused planner that answers one question: what to study next.",
     meta: "Individual Project",
     image: p3,
     year: "2024",
