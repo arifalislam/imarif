@@ -74,7 +74,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="mt-20 flex justify-between items-center text-[10px] uppercase tracking-[0.3em] text-white/40">
+      <div className="mt-20 flex flex-col gap-2 items-center md:flex-row md:justify-between text-[10px] uppercase tracking-[0.3em] text-white/40 text-center">
         <span>© 2026 ARIFUL ISLAM</span>
         <span>Designed & built with ❤️ and care </span>
       </div>
